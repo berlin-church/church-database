@@ -4,6 +4,8 @@ lock "3.7.2"
 set :application, "church"
 set :repo_url, 'git@github.com:berlin-international-community-church/church-database.git'
 
+set :tmp_dir, '~/tmp'
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
