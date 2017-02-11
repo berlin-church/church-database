@@ -1,6 +1,6 @@
 [ ![Codeship Status for berlin-international-community-church/church-database](https://app.codeship.com/projects/8d3653e0-d29e-0134-b90f-62f830a65715/status?branch=master)](https://app.codeship.com/projects/201794)
 
-# Project Title
+# Church Database
 
 The 'Church Database' App is a simple rails address App built with [activeadmin](https://github.com/activeadmin/activeadmin
 ) to keep track of existing people in church. It interfaces with forms (e.g. Google Forms) to retrieve updates and new people participating.
@@ -9,7 +9,6 @@ The 'Church Database' App is a simple rails address App built with [activeadmin]
 
 To get started you'll need
  * rvm or rbenv
- * rails 5
 
 ```
 rvm use 2.4.0@church --create
@@ -25,48 +24,20 @@ The App should run on http://localhost:3000/admin
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+* Ruby 2.4.0
+* Rails 5
+* MySQL or Postgres
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+We use Rspec in our tests. So to run it follow these steps:
 
 ```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
+rvm use 2.4.0@church --create
+gem install bundler
+bundle install
+bundle exec rake db:migrate
+bundle exec rspec spec/
 ```
 
 ## Deployment
@@ -85,7 +56,8 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
-
+* Giulliano Bueno
+* Jonathan Wiens
 
 ## License
 The MIT License
@@ -101,6 +73,5 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* BICC developers
+* Our pastor
