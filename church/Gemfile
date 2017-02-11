@@ -33,7 +33,8 @@ gem 'capistrano-rails', group: :development
 
 gem 'devise'
 
-# gem 'activeadmin'
+gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
+gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
