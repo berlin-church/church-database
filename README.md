@@ -1,3 +1,5 @@
+[ ![Codeship Status for berlin-international-community-church/church-database](https://app.codeship.com/projects/8d3653e0-d29e-0134-b90f-62f830a65715/status?branch=master)](https://app.codeship.com/projects/201794)
+
 # Project Title
 
 The 'Church Database' App is a simple rails address App built with [activeadmin](https://github.com/activeadmin/activeadmin
