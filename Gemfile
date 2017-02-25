@@ -42,11 +42,12 @@ gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 
 gem 'capistrano-rails'
 
+# Use Puma as the app server
+gem 'puma', '~> 3.0'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-  # Use Puma as the app server
-  gem 'puma', '~> 3.0'
   gem 'rubocop'
 end
 
