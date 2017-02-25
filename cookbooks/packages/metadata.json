@@ -1,0 +1,51 @@
+{
+  "name": "packages",
+  "description": "Installs list of packages from an attribute.",
+  "long_description": "[![Build Status](https://travis-ci.org/mattray/packages-cookbook.png)](https://travis-ci.org/mattray/packages-cookbook)\n\nDescription\n===========\n\nTrivial cookbook to manage a list of packages from an attribute.\n\nAttributes\n==========\n\nNote that we namespace the attributes with `packages-cookbook` so we don't conflict with the Ohai-generated attributes.\n\npackages-cookbook\n-----------------\n\nDetermines package names to manage with the `package` resource in Chef in the `packages::default` recipe. It can be specified as an array of strings that are packages to install, or as a hash of packages with an action to take.\n\nIn this example:\n\n```ruby\nnode.default['packages-cookbook'] = ['git', 'openssl']\n```\n\nThe `git` and `openssl` packages will be installed.\n\nIn this example, using a hash of packages and actions:\n\n```ruby\nnode.default['packages-cookbook'] = {'git' => 'install', 'openssl' => 'upgrade', 'xorg-common' => 'remove'}\n```\n\nThe `git` package will be installed, `openssl` will be upgraded, and `xorg-common` will be removed.\n\npackages-cookbook_default_action\n--------------------------------\n\nDetermines the default action that the package resource will take on the list of packages. By default this is `\"install\"`. Has no effect if the `packages-cookbook` attribute is a hash.\n\nRecipe\n=======\n\ndefault\n-------\n\nThe recipe installs the packages specified in the `node['packages-cookbook']` attribute. It will use Chef 12.1.0's \"multipackage\" feature if the attribute is an array.\n\nLicense and Author\n==================\n\nAuthor:: Matt Ray (<matt@chef.io>)\n\nAuthor:: Joshua Timberman (<joshua@chef.io>)\n\nCopyright 2013-2016 Chef Software, Inc.\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
+  "maintainer": "Chef Software, Inc.",
+  "maintainer_email": "matt@chef.io",
+  "license": "Apache 2.0",
+  "platforms": {
+
+  },
+  "dependencies": {
+
+  },
+  "recommendations": {
+
+  },
+  "suggestions": {
+
+  },
+  "conflicting": {
+
+  },
+  "providing": {
+
+  },
+  "replacing": {
+
+  },
+  "attributes": {
+
+  },
+  "groupings": {
+
+  },
+  "recipes": {
+
+  },
+  "version": "1.0.0",
+  "source_url": "https://github.com/mattray/packages-cookbook",
+  "issues_url": "https://github.com/mattray/packages-cookbook/issues",
+  "privacy": false,
+  "chef_versions": [
+
+  ],
+  "ohai_versions": [
+
+  ],
+  "gems": [
+
+  ]
+}

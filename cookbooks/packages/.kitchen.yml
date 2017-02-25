@@ -1,0 +1,27 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-14.04
+  - name: centos-6.7
+
+suites:
+  - name: default
+    run_list:
+      - recipe[packages]
+    attributes:
+      packages-cookbook: [bash, grep]
+    provisioner:
+      require_chef_omnibus: 12.0.3
+
+  - name: multipackage
+    run_list:
+      - recipe[packages]
+    attributes:
+      packages-cookbook: [bash, grep]
+    provisioner:
+      require_chef_omnibus: 12.9
