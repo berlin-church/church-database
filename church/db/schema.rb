@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225111932) do
+ActiveRecord::Schema.define(version: 20170225122418) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 20170225111932) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.string   "Street"
-    t.string   "Street_number"
-    t.string   "Area_code"
-    t.string   "City"
-    t.string   "Country"
+    t.string   "street"
+    t.string   "street_number"
+    t.string   "area_code"
+    t.string   "city"
+    t.string   "country"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
@@ -54,21 +54,24 @@ ActiveRecord::Schema.define(version: 20170225111932) do
   end
 
   create_table "families", force: :cascade do |t|
-    t.string   "Name"
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "members", force: :cascade do |t|
-    t.string   "FirstName"
-    t.string   "LastName"
-    t.string   "Gender"
-    t.string   "Email"
-    t.string   "Phone1"
-    t.string   "Phone2"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "gender"
+    t.date     "birthday"
+    t.string   "email"
+    t.string   "phone1"
+    t.string   "phone2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "family_id"
+    t.integer  "address_id"
+    t.index ["address_id"], name: "index_members_on_address_id"
     t.index ["family_id"], name: "index_members_on_family_id"
   end
 

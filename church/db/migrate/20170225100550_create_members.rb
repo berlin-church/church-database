@@ -1,12 +1,13 @@
 class CreateMembers < ActiveRecord::Migration[5.0]
   def change
     create_table :members do |t|
-      t.string :FirstName
-      t.string :LastName
-      t.string :Gender
-      t.string :Email
-      t.string :Phone1
-      t.string :Phone2
+      t.string :first_name
+      t.string :last_name
+      t.string :gender
+      t.date :birthday
+      t.string :email
+      t.string :phone1
+      t.string :phone2
 
       t.timestamps
     end
