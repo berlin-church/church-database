@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation
-  menu label: proc{ I18n.t "users" }
+  menu label: proc { I18n.t 'users' }
 
   index do
     selectable_column
@@ -18,12 +19,11 @@ ActiveAdmin.register User do
   filter :created_at
 
   form do |f|
-    f.inputs "Admin Details" do
+    f.inputs 'Admin Details' do
       f.input :email
       f.input :password
       f.input :password_confirmation
     end
     f.actions
   end
-
 end

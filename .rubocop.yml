@@ -1,0 +1,42 @@
+# This is the configuration used to check the rubocop source code.
+
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+    - 'cookbooks/**/*'
+    - 'bin/**/*'
+    - 'db/schema.rb'
+    - 'Gemfile'
+    - 'Gemfile.lock'
+    - 'Vagrantfile'
+    - 'config/initializers/devise.rb'
+  TargetRubyVersion: 2.1
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 15
+
+Documentation:
+  Enabled: false
+
+Style/Encoding:
+  EnforcedStyle: when_needed
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Style/IndentHeredoc:
+  EnforcedStyle: powerpack
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
