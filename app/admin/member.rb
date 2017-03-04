@@ -7,7 +7,7 @@ ActiveAdmin.register Member do
                 :phone1,
                 :phone2,
                 :email,
-                address_attributes: [:street, :street_number, :area_code, :city, :country, _destroy: true]
+                address_attributes: [:id, :street, :street_number, :area_code, :city, :country, _destroy: true]
 
   form title: 'Creating / Updating' do |f|
     inputs 'Details' do
@@ -30,5 +30,28 @@ ActiveAdmin.register Member do
     end
     para 'Press cancel to return to the list without saving.'
     actions
+  end
+
+  show do
+    attributes_table do
+      row :first_name
+      row :last_name
+      row :gender
+      row :email
+      row :birthday
+      row :phone1
+      row :phone2
+    end
+
+    panel :member do
+      table_for member.address do |a|
+        column :id
+        column :street
+        column :street_number
+        column :city
+        column :area_code
+        column :country
+      end
+    end
   end
 end
