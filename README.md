@@ -1,35 +1,77 @@
-# README
+[ ![Codeship Status for berlin-international-community-church/church-database](https://app.codeship.com/projects/8d3653e0-d29e-0134-b90f-62f830a65715/status?branch=master)](https://app.codeship.com/projects/201794)
 
-* Ruby version
-2.4.0
+# Church Database
 
-* System dependencies
+The 'Church Database' App is a simple rails address App built with [activeadmin](https://github.com/activeadmin/activeadmin
+) to keep track of existing people in church. It interfaces with forms (e.g. Google Forms) to retrieve updates and new people participating.
 
-* Configuration
+## Getting Started
 
-In the production server, we need to configure the connection
-info as a environment variable.
-
-```
-export DATABASE_NAME=church_production
-export DATABASE_USER=church
-export DATABASE_PASSWORD=123456
-```
-
-And two more in your continuous delivery server (Codeship for example).
+To get started you'll need
+ * rvm or rbenv
 
 ```
-export DEPLOY_USER=church
+rvm use 2.4.0@church --create
+gem install bundler
+gem install rails
+bundle install
+bundle exec rake db:migrate
+bundle exec rake db:seed
+bundle exec rails s
 ```
 
-* Database creation
+The App should run on http://localhost:3000/admin
 
-* Database initialization
+### Prerequisites
 
-* How to run the test suite
+* Ruby 2.4.0
+* Rails 5
+* MySQL or Postgres
 
-* Services (job queues, cache servers, search engines, etc.)
+## Running the tests
 
-* Deployment instructions
-We use Capistrano 3 to deploy it. Please, check Capfile and config/deploy/production.rb.
-* ...
+We use Rspec in our tests. So to run it follow these steps:
+
+```
+rvm use 2.4.0@church --create
+gem install bundler
+bundle install
+bundle exec rake db:migrate
+bundle exec rspec spec/
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+
+## Authors
+* Giulliano Bueno
+* Jonathan Wiens
+
+## License
+The MIT License
+
+Further resources on the MIT License
+Copyright (c) 2017 Berlin International Community Church e.V.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## Acknowledgments
+
+* BICC developers
+* Our pastor
