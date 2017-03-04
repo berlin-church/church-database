@@ -53,7 +53,7 @@ ActiveAdmin.register Member do
     end
 
     panel :member do
-      table_for member.address do |_a|
+      table_for member.address do
         column :id
         column :street
         column :street_number
