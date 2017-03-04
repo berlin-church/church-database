@@ -8,6 +8,7 @@ AllCops:
     - 'spec/fixtures/**/*'
     - 'tmp/**/*'
     - 'cookbooks/**/*'
+    - 'bin/**/*'
   TargetRubyVersion: 2.1
 
 Style/Encoding:

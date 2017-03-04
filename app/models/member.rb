@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Member < ApplicationRecord
   belongs_to :family
   has_one :address

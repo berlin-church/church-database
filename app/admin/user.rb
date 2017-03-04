@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation
   menu label: proc { I18n.t 'users' }
