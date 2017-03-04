@@ -9,7 +9,21 @@ AllCops:
     - 'tmp/**/*'
     - 'cookbooks/**/*'
     - 'bin/**/*'
+    - 'db/schema.rb'
+    - 'Gemfile'
+    - 'Gemfile.lock'
+    - 'Vagrantfile'
+    - 'config/initializers/devise.rb'
   TargetRubyVersion: 2.1
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 15
+
+Documentation:
+  Enabled: false
 
 Style/Encoding:
   EnforcedStyle: when_needed
