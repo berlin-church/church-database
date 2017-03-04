@@ -1,8 +1,15 @@
 # frozen_string_literal: true
 ActiveAdmin.register Member do
-  permit_params :first_name, :last_name, :gender, :birthday, :phone1, :phone2
+  permit_params :first_name,
+                :last_name,
+                :gender,
+                :birthday,
+                :phone1,
+                :phone2,
+                :email,
+                address_attributes: [:street, :street_number, :area_code, :city, :country, _destroy: true]
 
-  form title: 'A custom title' do |f|
+  form title: 'Creating / Updating' do |f|
     inputs 'Details' do
       input :first_name
       input :last_name
@@ -15,7 +22,6 @@ ActiveAdmin.register Member do
           a.input :street
           a.input :street_number
           a.input :area_code
-          a.object.city = 'Berlin'
           a.input :city
           a.input :country, priority_countries: ['DE']
         end
@@ -25,17 +31,4 @@ ActiveAdmin.register Member do
     para 'Press cancel to return to the list without saving.'
     actions
   end
-
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
 end
