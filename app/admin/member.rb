@@ -14,6 +14,7 @@ ActiveAdmin.register Member do
       input :first_name
       input :last_name
       input :gender, collection: %w(Male Female)
+      input :email
       input :birthday, start_year: Date.today.year - 90, end_year: Date.today.year
       input :phone1
       input :phone2
@@ -32,6 +33,14 @@ ActiveAdmin.register Member do
     actions
   end
 
+  collection_action :email_csv, method: :get do
+    klass = params[:resource_class].singularize.capitalize.constantize
+    @q = klass.ransack(params[:q])
+    @result = @q.result(distinct: true).select(:email).map(&:email)
+
+    send_data @result.to_a.to_s.delete('[').delete(']').delete('"')
+  end
+
   show do
     attributes_table do
       row :first_name
@@ -44,7 +53,7 @@ ActiveAdmin.register Member do
     end
 
     panel :member do
-      table_for member.address do |_a|
+      table_for member.address do
         column :id
         column :street
         column :street_number
