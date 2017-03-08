@@ -62,5 +62,6 @@ ActiveAdmin.register Member do
         column :country
       end
     end
+    active_admin_comments
   end
 end
