@@ -50,7 +50,6 @@ ActiveAdmin.register Member do
       row :birthday
       row :phone1
       row :phone2
-      active_admin_comments
     end
 
     panel :member do
@@ -63,5 +62,6 @@ ActiveAdmin.register Member do
         column :country
       end
     end
+    active_admin_comments
   end
 end
