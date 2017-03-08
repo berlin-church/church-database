@@ -7,5 +7,5 @@ class Member < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :gender, presence: true
-  validates :email, :allow_blank => true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :email, allow_blank: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 end
