@@ -9,7 +9,7 @@ AllCops:
     - 'tmp/**/*'
     - 'cookbooks/**/*'
     - 'bin/**/*'
-    - 'db/schema.rb'
+    - 'db/**/*'
     - 'Gemfile'
     - 'Gemfile.lock'
     - 'Vagrantfile'
