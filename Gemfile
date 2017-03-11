@@ -31,6 +31,8 @@ gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem "active_material", github: "vigetlabs/active_material"
+
 gem 'devise'
 
 gem 'countries'
