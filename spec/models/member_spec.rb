@@ -7,7 +7,7 @@ describe Member do
 
   context 'has a family' do
     it 'has reference for the family' do
-      expect(member.family).to_not be_nil
+      expect(member.family).not_to be_nil
     end
   end
 end
