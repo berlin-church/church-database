@@ -4,18 +4,14 @@
 
 require_relative 'config/application'
 require 'rspec/core/rake_task'
-require 'rubocop/rake_task'
 
 Rails.application.load_tasks
 
-task default: [:spec]
+task default: [:spec, :rubocop]
 
-RSpec::Core::RakeTask.new(:rspec)
-
-desc 'Run rspec tests'
-task spec: [:rspec, :rubocop]
-
-desc 'Run rubocop'
-task :rubocop do
-  RuboCop::RakeTask.new
+begin
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new(:rubocop)
+rescue LoadError
+  nil
 end
