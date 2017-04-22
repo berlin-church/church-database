@@ -33,6 +33,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise'
 
+# Sentry
+gem "sentry-raven"
+
 gem 'countries'
 
 # For country lists in forms

@@ -14,3 +14,11 @@ module Church
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+
+Raven.configure do |config|
+  config.dsn = ENV["SENTRY"]
+  config.environments = ['staging', 'production']
+  config.sanitize_fields = Rails.application.config.filter_parameters.map(&:to_s)
+end
+
+
