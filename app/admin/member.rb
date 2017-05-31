@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 ActiveAdmin.register Member do
-
   permit_params :first_name,
                 :last_name,
                 :gender,
