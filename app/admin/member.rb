@@ -53,9 +53,11 @@ ActiveAdmin.register Member do
       row :phone2
     end
 
-    panel :member do
+    panel :addresses do
       table_for member.address do
-        column :id
+        column :id do |address|
+          link_to address.id, admin_address_path(address)
+        end
         column :street
         column :street_number
         column :city
