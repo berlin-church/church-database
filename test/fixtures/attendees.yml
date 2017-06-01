@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  form_reply: MyText
+  paid: false
+  member: one
+  event_day: one
+  canceled: false
+
+two:
+  form_reply: MyText
+  paid: false
+  member: two
+  event_day: two
+  canceled: false

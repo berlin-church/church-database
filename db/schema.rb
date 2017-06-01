@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170311100208) do
+ActiveRecord::Schema.define(version: 20170429110447) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170311100208) do
   create_table "addresses", force: :cascade do |t|
     t.string   "street"
     t.string   "street_number"
-    t.string   "area_code"
+    t.string   "zip_code"
     t.string   "city"
     t.string   "country"
     t.datetime "created_at",    null: false
@@ -55,6 +55,37 @@ ActiveRecord::Schema.define(version: 20170311100208) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "attendees", force: :cascade do |t|
+    t.text     "form_reply"
+    t.boolean  "paid"
+    t.integer  "member_id"
+    t.integer  "event_instance_id"
+    t.boolean  "canceled"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["event_instance_id"], name: "index_attendees_on_event_instance_id"
+    t.index ["member_id"], name: "index_attendees_on_member_id"
+  end
+
+  create_table "event_instances", force: :cascade do |t|
+    t.text     "form"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "address_id"
+    t.text     "details"
+    t.decimal  "cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_event_instances_on_address_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "families", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -75,6 +106,10 @@ ActiveRecord::Schema.define(version: 20170311100208) do
     t.integer  "address_id"
     t.index ["address_id"], name: "index_members_on_address_id"
     t.index ["family_id"], name: "index_members_on_family_id"
+  end
+
+  create_table "members_members", id: false, force: :cascade do |t|
+    t.integer "member_id", null: false
   end
 
 end
