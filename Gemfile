@@ -35,6 +35,9 @@ gem "active_material", github: "vigetlabs/active_material"
 
 gem 'devise'
 
+# Sentry
+gem "sentry-raven"
+
 gem 'countries'
 
 # For country lists in forms
