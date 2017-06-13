@@ -15,7 +15,7 @@ AllCops:
     - 'Gemfile.lock'
     - 'Vagrantfile'
     - 'config/initializers/devise.rb'
-  TargetRubyVersion: 2.1
+  TargetRubyVersion: 2.4
 
 Documentation:
   Enabled: false

@@ -55,7 +55,7 @@ ActiveAdmin.register Member do
     panel :addresses do
       table_for member.address do
         column :id do |address|
-          link_to address?.id, admin_address_path(address)
+          link_to address.id, admin_address_path(address) if address
         end
         column :street
         column :street_number
