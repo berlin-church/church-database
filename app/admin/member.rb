@@ -7,7 +7,7 @@ ActiveAdmin.register Member do
                 :phone1,
                 :phone2,
                 :email,
-                address_attributes: [:id, :street, :street_number, :area_code, :city, :country, _destroy: true]
+                address_attributes: [:id, :street, :street_number, :zip_code, :city, :country, _destroy: true]
 
   form title: 'Creating / Updating' do |f|
     inputs 'Details' do
@@ -22,7 +22,7 @@ ActiveAdmin.register Member do
         has_many :address do |a|
           a.input :street
           a.input :street_number
-          a.input :area_code
+          a.input :zip_code
           a.input :city
           a.input :country, priority_countries: ['DE']
         end
