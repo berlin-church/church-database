@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Devise
   module Strategies
     class JsonWebToken < Base
@@ -7,7 +8,7 @@ module Devise
 
       def authenticate!
         return fail! unless claims
-        return fail! unless claims.has_key?('user_id')
+        return fail! unless claims.key?('user_id')
 
         success! User.find_by_id claims['user_id']
       end
@@ -17,9 +18,13 @@ module Devise
       def claims
         strategy, token = request.headers['Authorization'].split(' ')
 
-        return nil if (strategy || '').downcase != 'bearer'
+        return nil unless (strategy || '').casecmp('bearer').zero?
 
-        JWTWrapper.decode(token) rescue nil
+        begin
+          JWTWrapper.decode(token)
+        rescue
+          nil
+        end
       end
     end
   end
