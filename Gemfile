@@ -51,6 +51,10 @@ gem 'capistrano-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 
+gem 'doorkeeper'
+gem 'doorkeeper-jwt'
+gem 'active_model_serializers'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'rubocop'
