@@ -55,7 +55,7 @@ group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'rubocop'
   gem 'sqlite3'
-  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'shoulda-matchers'
   gem 'guard-rspec', require: false
 end
 
