@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204195306) do
+ActiveRecord::Schema.define(version: 20171207205647) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -179,13 +179,13 @@ ActiveRecord::Schema.define(version: 20171204195306) do
   end
 
   create_table "question_groups", force: :cascade do |t|
-    t.integer  "questionaire_id"
+    t.integer  "questionnaire_id"
     t.string   "title"
     t.text     "subtitle"
     t.integer  "position"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["questionaire_id"], name: "index_question_groups_on_questionaire_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["questionnaire_id"], name: "index_question_groups_on_questionnaire_id"
   end
 
   create_table "question_options", force: :cascade do |t|
@@ -197,13 +197,13 @@ ActiveRecord::Schema.define(version: 20171204195306) do
     t.index ["question_id"], name: "index_question_options_on_question_id"
   end
 
-  create_table "questionaires", force: :cascade do |t|
+  create_table "questionnaires", force: :cascade do |t|
     t.integer  "event_instance_id"
     t.string   "name"
     t.integer  "position"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.index ["event_instance_id"], name: "index_questionaires_on_event_instance_id"
+    t.index ["event_instance_id"], name: "index_questionnaires_on_event_instance_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -212,6 +212,7 @@ ActiveRecord::Schema.define(version: 20171204195306) do
     t.integer  "position"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "answer_type"
     t.index ["question_group_id"], name: "index_questions_on_question_group_id"
   end
 

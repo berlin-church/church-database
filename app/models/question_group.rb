@@ -1,3 +1,4 @@
 class QuestionGroup < ApplicationRecord
-  belongs_to :questionaire
+  belongs_to :questionnaire
+  has_many :questions
 end

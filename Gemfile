@@ -53,11 +53,10 @@ gem 'puma', '~> 3.0'
 
 gem 'doorkeeper'
 gem 'doorkeeper-jwt'
-gem 'active_model_serializers'
+gem 'jsonapi-serializers'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
-  gem 'rubocop'
   gem 'sqlite3'
   gem 'shoulda-matchers'
   gem 'guard-rspec', require: false

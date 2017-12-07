@@ -1,4 +1,4 @@
-ActiveAdmin.register Questionaire do
+ActiveAdmin.register Questionnaire do
   menu parent: "Questionnaires"
 
   permit_params :name, :event_instance_id

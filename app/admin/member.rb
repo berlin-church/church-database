@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 ActiveAdmin.register Member do
+
   permit_params :first_name,
                 :last_name,
                 :gender,
@@ -7,6 +8,8 @@ ActiveAdmin.register Member do
                 :phone1,
                 :phone2,
                 :email,
+                :password,
+                :password_confirmation,
                 address_attributes: [:id, :street, :street_number, :zip_code, :city, :country, _destroy: true]
 
   form title: 'Creating / Updating' do |f|
@@ -15,6 +18,8 @@ ActiveAdmin.register Member do
       input :last_name
       input :gender, collection: %w(Male Female)
       input :email
+      input :password
+      input :password_confirmation
       input :birthday, start_year: Date.today.year - 90, end_year: Date.today.year
       input :phone1
       input :phone2

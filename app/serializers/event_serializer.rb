@@ -1,3 +1,5 @@
-class EventSerializer < ActiveModel::Serializer
+class EventSerializer
+  include JSONAPI::Serializer
+
   attributes :id, :description
 end
