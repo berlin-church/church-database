@@ -2,8 +2,8 @@
 require 'rails_helper'
 
 describe Member do
-  let(:family) { FactoryGirl.create :family }
-  let(:member) { FactoryGirl.create :member, family: family }
+  let(:family) { FactoryBot.create :family }
+  let(:member) { FactoryBot.create :member, family: family }
 
   context 'has a family' do
     it 'has reference for the family' do

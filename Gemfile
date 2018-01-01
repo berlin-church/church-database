@@ -74,9 +74,7 @@ end
 group :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  # do TDD!!!!
-  gem 'factory_girl'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'rspec'
   gem 'rspec-rails'
   # gem 'rubocop-rspec'
