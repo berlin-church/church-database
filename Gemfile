@@ -79,7 +79,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'rubocop-rspec'
+  # gem 'rubocop-rspec'
 end
 
 group :production do

@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :doorkeeper_authorize!
-  
+
   def index
     questions = Question.where(question_group_id: params[:question_group_id])
     render json: JSONAPI::Serializer.serialize(questions, is_collection: true)
