@@ -51,11 +51,14 @@ gem 'capistrano-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 
+gem 'doorkeeper'
+gem 'doorkeeper-jwt'
+gem 'jsonapi-serializers'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
-  gem 'rubocop'
   gem 'sqlite3'
-  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'shoulda-matchers'
   gem 'guard-rspec', require: false
 end
 
@@ -76,7 +79,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'rubocop-rspec'
+  # gem 'rubocop-rspec'
 end
 
 group :production do

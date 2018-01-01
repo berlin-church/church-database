@@ -8,6 +8,7 @@ FactoryGirl.define do
     first_name 'Mario'
     last_name 'Bros'
     gender :male
+    password '123456'
     email { generate(:email) }
   end
 end
