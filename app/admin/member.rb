@@ -46,6 +46,14 @@ ActiveAdmin.register Member do
     send_data @result.to_a.to_s.delete('[').delete(']').delete('"')
   end
 
+    sidebar "Upcoming Events", only: :show do
+      ul do
+        EventInstance.upcoming.each do |event|
+          li event.name
+        end
+      end
+    end
+
   show do
     attributes_table do
       row :first_name
