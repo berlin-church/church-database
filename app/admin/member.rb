@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 ActiveAdmin.register Member do
-
   permit_params :first_name,
                 :last_name,
                 :gender,
@@ -11,6 +10,16 @@ ActiveAdmin.register Member do
                 :password,
                 :password_confirmation,
                 address_attributes: [:id, :street, :street_number, :zip_code, :city, :country, _destroy: true]
+
+  index do
+    id_column
+    column :first_name
+    column :last_name
+    column :email
+    column :phone1
+    column :gender
+    column :updated_at
+  end
 
   form title: 'Creating / Updating' do |f|
     inputs 'Details' do
