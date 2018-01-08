@@ -19,6 +19,7 @@ ActiveAdmin.register Member do
     column :phone1
     column :gender
     column :updated_at
+    actions
   end
 
   form title: 'Creating / Updating' do |f|
