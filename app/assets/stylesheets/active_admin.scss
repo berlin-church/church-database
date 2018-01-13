@@ -12,6 +12,13 @@
 // @import "active_admin/base";
 @import "active_material";
 
+.follow_up_diagram {
+  height: 600px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 //

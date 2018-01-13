@@ -78,5 +78,8 @@ ActiveAdmin.register Member do
       end
     end
     active_admin_comments
+    panel 'See the diagram below for instructions on how to follow up' do
+      image_tag('follow-up-diagram.png', class: 'follow_up_diagram')
+    end
   end
 end
