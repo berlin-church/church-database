@@ -13,6 +13,18 @@ ActiveAdmin.register Member do
                 :password_confirmation,
                 address_attributes: [:id, :street, :street_number, :zip_code, :city, :country, _destroy: true]
 
+  index do
+    selectable_column
+    id_column
+    column :first_name
+    column :last_name
+    column :email
+    column :phone1
+    column :gender
+    column :updated_at
+    actions
+  end
+
   form title: 'Creating / Updating' do |f|
     inputs 'Details' do
       input :first_name
