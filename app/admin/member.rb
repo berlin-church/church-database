@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 ActiveAdmin.register Member do
+  # Registration / Updating
+
   permit_params :first_name,
                 :last_name,
                 :gender,
@@ -49,6 +51,8 @@ ActiveAdmin.register Member do
     actions
   end
 
+  # CSV export
+
   collection_action :email_csv, method: :get do
     klass = params[:resource_class].singularize.capitalize.constantize
     @q = klass.ransack(params[:q])
@@ -56,6 +60,18 @@ ActiveAdmin.register Member do
 
     send_data @result.to_a.to_s.delete('[').delete(']').delete('"')
   end
+
+  # Sidepanel for events
+
+  sidebar 'Upcoming Events', only: :show do
+    ul do
+      EventInstance.upcoming.each do |event|
+        li event.name
+      end
+    end
+  end
+
+  # Member View
 
   show do
     attributes_table do
@@ -81,5 +97,8 @@ ActiveAdmin.register Member do
       end
     end
     active_admin_comments
+    panel 'See the diagram below for instructions on how to follow up' do
+      image_tag('follow-up-diagram.png', class: 'follow_up_diagram')
+    end
   end
 end
