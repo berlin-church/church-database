@@ -21,6 +21,7 @@ ActiveAdmin.register Member do
     column :email
     column :phone1
     column :gender
+    column :status
     column :updated_at
     actions
   end
@@ -31,8 +32,6 @@ ActiveAdmin.register Member do
       input :last_name
       input :gender, collection: %w(Male Female)
       input :email
-      input :password
-      input :password_confirmation
       input :birthday, start_year: Date.today.year - 90, end_year: Date.today.year
       input :phone1
       input :phone2
@@ -45,6 +44,7 @@ ActiveAdmin.register Member do
           a.input :country, priority_countries: ['DE']
         end
       end
+      input :status, as: :radio unless f.object.new_record?
       li "Created at #{f.object.created_at}" unless f.object.new_record?
     end
     para 'Press cancel to return to the list without saving.'
@@ -82,6 +82,7 @@ ActiveAdmin.register Member do
       row :birthday
       row :phone1
       row :phone2
+      row :status
     end
 
     panel :addresses do
