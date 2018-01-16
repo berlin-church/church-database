@@ -41,9 +41,7 @@ ActiveAdmin.register ::ActiveAdmin::Permission, as: "Permission" do
   index do
     selectable_column
     column :role
-    column(:state) do |record|
-      status_tag(record.state, record.can? ? :ok : nil)
-    end
+    column(:state)
     column :action
     column :name
     column :class_name
