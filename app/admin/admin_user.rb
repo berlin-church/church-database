@@ -23,7 +23,17 @@ ActiveAdmin.register AdminUser do
       f.input :email
       f.input :password
       f.input :password_confirmation
+      f.input :role
     end
     f.actions
+  end
+
+  controller do
+    def update
+      resource.role = params[:admin_user][:role] unless params[:admin_user][:role].blank?
+      resource.password = params[:password] unless params[:password].blank?
+      resource.password_confirmation = params[:password_confirmation] unless params[:password_confirmation].blank?
+      resource.save!
+    end
   end
 end
