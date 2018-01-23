@@ -11,12 +11,12 @@ class QuestionOptionsController < ApplicationController
   end
 
   def show
-    question_option = QuestionOption.find_by params[:id]
+    question_option = QuestionOption.find_by id: params[:id]
     render json: JSONAPI::Serializer.serialize(question_option)
   end
 
   def question
-    question_option = QuestionOption.find_by params[:id]
+    question_option = QuestionOption.find_by id: params[:id]
     render json: JSONAPI::Serializer.serialize(question_option.question)
   end
 end
