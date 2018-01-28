@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  # before_action :doorkeeper_authorize!
+  before_action :doorkeeper_authorize!
 
   def index
     def index
