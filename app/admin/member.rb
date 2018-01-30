@@ -32,6 +32,8 @@ ActiveAdmin.register Member do
       input :last_name
       input :gender, collection: %w(Male Female)
       input :email
+      input :password
+      input :password_confirmation
       input :birthday, start_year: Date.today.year - 90, end_year: Date.today.year
       input :phone1
       input :phone2
