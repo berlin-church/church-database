@@ -11,7 +11,7 @@ class QuestionGroupsController < ApplicationController
   end
 
   def questions
-    question_group = QuestionGroup.find_by params[:id]
+    question_group = QuestionGroup.find_by id: params[:id]
     render json: JSONAPI::Serializer.serialize(question_group.questions, is_collection: true)
   end
 end

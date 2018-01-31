@@ -7,16 +7,16 @@ class QuestionOptionsController < ApplicationController
                        else
                          QuestionOption.where(question_id: params[:question_id])
                        end
-    render json: JSONAPI::Serializer.serialize(question_groups, is_collection: true)
+    render json: JSONAPI::Serializer.serialize(question_options, is_collection: true)
   end
 
   def show
-    question_option = QuestionOption.find_by params[:id]
+    question_option = QuestionOption.find_by id: params[:id]
     render json: JSONAPI::Serializer.serialize(question_option)
   end
 
   def question
-    question_option = QuestionOption.find_by params[:id]
+    question_option = QuestionOption.find_by id: params[:id]
     render json: JSONAPI::Serializer.serialize(question_option.question)
   end
 end
