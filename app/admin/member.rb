@@ -1,5 +1,17 @@
 # frozen_string_literal: true
 ActiveAdmin.register Member do
+
+  controller do
+    def scoped_collection
+      #byebug
+      if current_admin_user.volunteer? || current_admin_user.guest?
+        current_admin_user.members
+      else
+        Member.all
+      end
+    end
+  end
+
   # Registration / Updating
 
   permit_params :first_name,
@@ -11,6 +23,7 @@ ActiveAdmin.register Member do
                 :email,
                 :password,
                 :password_confirmation,
+                :created_by,
                 address_attributes: [:id, :street, :street_number, :zip_code, :city, :country, _destroy: true]
 
   index do
@@ -32,8 +45,6 @@ ActiveAdmin.register Member do
       input :last_name
       input :gender, collection: %w(Male Female)
       input :email
-      input :password
-      input :password_confirmation
       input :birthday, start_year: Date.today.year - 90, end_year: Date.today.year
       input :phone1
       input :phone2
@@ -84,7 +95,12 @@ ActiveAdmin.register Member do
       row :birthday
       row :phone1
       row :phone2
-      row :status
+      row "Follow-Up Status" do
+        member.status
+      end
+      row "Created By" do
+        member.admin_user
+      end
     end
 
     panel :addresses do
@@ -102,6 +118,16 @@ ActiveAdmin.register Member do
     active_admin_comments
     panel 'See the diagram below for instructions on how to follow up' do
       image_tag('follow-up-diagram.png', class: 'follow_up_diagram')
+    end
+  end
+
+  # Adjust the controller to set the created_by id derived from the logged in admin user
+
+  controller do
+    def create
+      create!
+      resource.created_by = current_admin_user.id
+      resource.save!
     end
   end
 end

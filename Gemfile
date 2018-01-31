@@ -53,6 +53,8 @@ gem 'doorkeeper'
 gem 'doorkeeper-jwt'
 gem 'jsonapi-serializers'
 
+gem 'active_admin_role'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
@@ -61,6 +63,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'byebug'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '~> 3.0.5'
   gem 'web-console', '>= 3.3.0'
@@ -70,8 +73,6 @@ group :development do
 end
 
 group :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
   gem 'factory_bot_rails'
   gem 'rspec'
   gem 'rspec-rails'
