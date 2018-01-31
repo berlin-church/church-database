@@ -7,7 +7,7 @@ class QuestionOptionsController < ApplicationController
                        else
                          QuestionOption.where(question_id: params[:question_id])
                        end
-    render json: JSONAPI::Serializer.serialize(question_groups, is_collection: true)
+    render json: JSONAPI::Serializer.serialize(question_options, is_collection: true)
   end
 
   def show

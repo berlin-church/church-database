@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   get "/questions/:id/question-options",               to: "questions#question_options"
   get "/questions/:id/relationships/question-options", to: "questions#question_options"
 
+  get "/option_answer/",                                   to: "option_answers#index"
+  get "/option_answer/:id",                                to: "option_answers#show"
+  get "/option_answer/:id/question-option",               to: "option_answers#question_option"
+
   devise_for :members
   use_doorkeeper
   # devise_for :users, ActiveAdmin::Devise.config
