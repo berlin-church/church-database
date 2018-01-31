@@ -7,4 +7,10 @@ class AdminUser < ApplicationRecord
          :recoverable, :rememberable,
          :trackable, :validatable
          # :lockable, :timeoutable
+
+  has_many :members, foreign_key: :created_by
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end
