@@ -24,6 +24,7 @@ ActiveAdmin.register Member do
                 :password,
                 :password_confirmation,
                 :created_by,
+                :status,
                 address_attributes: [:id, :street, :street_number, :zip_code, :city, :country, _destroy: true]
 
   index do
