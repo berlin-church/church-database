@@ -51,7 +51,7 @@ ActiveAdmin.register Member do
       input :phone2
       inputs do
         has_many :address do |a|
-          a.input :street
+          a.input :street, label: 'District or Street Name'
           a.input :street_number
           a.input :zip_code
           a.input :city
@@ -96,10 +96,10 @@ ActiveAdmin.register Member do
       row :birthday
       row :phone1
       row :phone2
-      row "Follow-Up Status" do
+      row 'Follow-Up Status' do
         member.status
       end
-      row "Created By" do
+      row 'Created By' do
         member.admin_user
       end
     end
@@ -109,10 +109,12 @@ ActiveAdmin.register Member do
         column :id do |address|
           link_to address.id, admin_address_path(address) if address
         end
-        column :street
+        column 'District or Street Name' do
+          member.address.street
+        end
         column :street_number
         column :city
-        column :area_code
+        column :zip_code
         column :country
       end
     end
