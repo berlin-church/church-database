@@ -110,7 +110,7 @@ ActiveAdmin.register Member do
           link_to address.id, admin_address_path(address) if address
         end
         column 'District or Street Name' do
-          member.address.street
+          member.address.street if member.address
         end
         column :street_number
         column :city
