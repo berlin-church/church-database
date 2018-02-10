@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 ActiveAdmin.register AdminUser do
   role_changeable
-  permit_params :email, :password, :password_confirmation, :first_name, :last_name
+  permit_params :email, :password, :password_confirmation, :first_name, :last_name, :role
 
   controller do
     def scoped_collection
