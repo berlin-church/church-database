@@ -58,8 +58,8 @@ ActiveAdmin.register AdminUser do
       resource.first_name = params[:admin_user][:first_name] unless params[:admin_user][:first_name].blank?
       resource.last_name = params[:admin_user][:last_name] unless params[:admin_user][:last_name].blank?
       resource.email = params[:admin_user][:email] unless params[:admin_user][:email].blank?
-      resource.password = params[:password] unless params[:password].blank?
-      resource.password_confirmation = params[:password_confirmation] unless params[:password_confirmation].blank?
+      resource.password = params[:admin_user][:password] unless params[:admin_user][:password].blank?
+      resource.password_confirmation = params[:admin_user][:password_confirmation] unless params[:admin_user][:password_confirmation].blank?
       resource.role = params[:admin_user][:role] unless params[:admin_user][:role].blank? || !current_admin_user.admin?
       resource.save!
       redirect_to "/admin/admin_users"
