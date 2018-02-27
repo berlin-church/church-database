@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', role: 99)
 
 member = Member.create(
   first_name: 'Mario',
