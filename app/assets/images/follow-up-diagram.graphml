@@ -143,7 +143,7 @@
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="14" bottomF="14.03125" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
+              <y:BorderInsets bottom="28" bottomF="28.03125" left="11" leftF="10.5" right="11" rightF="10.5" top="0" topF="0.0"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -179,12 +179,10 @@
         <node id="n2::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="106.0" width="285.75" x="444.375" y="373.0"/>
+              <y:Geometry height="77.0" width="264.75" x="454.875" y="388.0"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="76.6640625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="285.75" x="0.0" y="14.66796875">Go to berlin.church to connect the person to a specific Community Group, Meet-Up or the Discovery Course
-(Serve: berlin.church/volunteer-registration)
-(Groups: berlin.church/group-registration)<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="node_width" configuration="CroppingLabel" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.3984375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="264.75" x="0.0" y="14.30078125">Go to berlin.church/registrations to connect the person to a specific Community Group, Meet-Up, Baptism, etc<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
