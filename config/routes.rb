@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   get "/question-groups/:id/questions",               to: "question_groups#questions"
   get "/question-groups/:id/relationships/questions", to: "question_groups#questions"
 
-  get "/events",                                   to: "events#index"
-  get "/events/:id",                               to: "events#show"
-  get "/events/:id/event_instances",               to: "events#event_instances"
-  get "/events/:id/relationships/event_instances", to: "events#event_instances"
+  get "/events",                             to: "events#index"
+  get "/events/:id",                         to: "events#show"
+  get "/events/:id/instances",               to: "events#event_instances"
+  get "/events/:id/relationships/instances", to: "events#event_instances"
 
   get "/option-answers/",                to: "option_answers#index"
   get "/option-answers/:id",             to: "option_answers#show"

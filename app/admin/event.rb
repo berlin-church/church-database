@@ -2,5 +2,5 @@
 ActiveAdmin.register Event do
   menu parent: 'Events'
 
-  permit_params :name, :description
+  permit_params :name, :description, :image_url
 end
