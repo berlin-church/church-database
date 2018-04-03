@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Member < ApplicationRecord
-  belongs_to :family
+  belongs_to :family, optional: true
   belongs_to :admin_user, foreign_key: :created_by
   has_one :address
   accepts_nested_attributes_for :address

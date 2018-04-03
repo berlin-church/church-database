@@ -1,12 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe OptionAnswersController, type: :controller do
-  let(:questionnaire)    { FactoryBot.create :questionnaire }
-  let(:question_group)   { FactoryBot.create :question_group, questionnaire: questionnaire }
-  let(:question)         { FactoryBot.create :question, question_group: question_group }
-  let(:question_option) { FactoryBot.create :question_option, question: question }
-  let!(:option_answer)   { FactoryBot.create :option_answer, question_option: question_option }
-  let(:token)            { double :acceptable? => true }
+  let(:option_answer) { FactoryBot.create :option_answer }
+  let(:question_option) { option_answer.question_option }
+  let(:token) { double :acceptable? => true }
 
   before do
     allow(controller).to receive(:doorkeeper_token) {token}

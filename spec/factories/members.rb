@@ -9,5 +9,6 @@ FactoryBot.define do
     last_name 'Bros'
     gender :male
     email { generate(:email) }
+    admin_user
   end
 end
