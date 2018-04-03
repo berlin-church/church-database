@@ -14,12 +14,11 @@ module Church
     # -- all .rb files in that directory are automatically loaded.
     config.middleware.delete Rack::Lock
 
-    # TODO: make it less permissive!
-    config.middleware.insert_before 0, "Rack::Cors" do
-      allow do
-        origins 'members-local.berlin.church', 'members.berlin.church'
-        resource '*', :headers => :any, :methods => [:get, :post, :delete, :put, :patch, :options, :head]
-      end
-    end
+    # config.middleware.insert_before 0, "Rack::Cors" do
+    #   allow do
+    #     origins 'members-local.berlin.church', 'members.berlin.church'
+    #     resource '*', :headers => :any, :methods => [:get, :post, :delete, :put, :patch, :options, :head]
+    #   end
+    # end
   end
 end
