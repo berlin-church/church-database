@@ -1,5 +1,5 @@
 class OptionAnswerSerializer
-  include JSONAPI::Serializer
+  include JSONApi::Serializer
 
   attributes :id
   has_one :question_option

@@ -1,5 +1,5 @@
 class QuestionGroupSerializer
-  include JSONAPI::Serializer
+  include JSONApi::Serializer
 
   attributes :id, :title, :position
   has_many :questions
