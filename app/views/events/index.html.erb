@@ -1,1 +1,22 @@
 <%= render "shared/nav" %>
+
+<% @events.each_slice(3) do |events| %>
+  <div class="row">
+    <% events.each do |event| %>
+    <div class="col s12 m4">
+      <div class="card">
+        <div class="card-image">
+          <img src="<%= event.image_url %>">
+          <span class="card-title"><%= event.name %></span>
+        </div>
+        <div class="card-content">
+          <p><%= event.description %></p>
+        </div>
+        <div class="card-action">
+          <a href="/events/<%= event.id %>/register">Register</a>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<% end %>
