@@ -1,6 +1,6 @@
 <%= render "shared/nav" %>
 
-<% @events.each_slice(3) do |events| %>
+<% @events&.each_slice(3) do |events| %>
   <div class="row">
     <% events.each do |event| %>
     <div class="col s12 m4">

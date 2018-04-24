@@ -3,6 +3,7 @@ class Member < ApplicationRecord
   belongs_to :family, optional: true
   belongs_to :admin_user, foreign_key: :created_by
   has_one :address
+  has_many :attendees
   accepts_nested_attributes_for :address
   validates_format_of :first_name, :last_name, with: /\A[^0-9`!@#\$%\^&*+_=]+\z/
   validates :first_name, presence: true

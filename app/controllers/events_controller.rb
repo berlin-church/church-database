@@ -6,5 +6,6 @@ class EventsController < ApplicationController
   def register
     @member = Member.new
     @id = params[:id]
+    @event = Event.find_by id: @id
   end
 end
