@@ -1,9 +1,10 @@
 class EventsController < ApplicationController
   def index
-    @resources = Event.all
+    @events = Event.all
   end
 
   def register
     @member = Member.new
+    @id = params[:id]
   end
 end

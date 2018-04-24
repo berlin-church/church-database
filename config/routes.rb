@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   resources :members
 
   get 'events/index'
-  get 'events/register'
+  get 'events/:id/register',  to: "events#register"
+  post 'events/:id/register',  to: "events#create_member"
 
   get "api/questionnaires",                                   to: "api/questionnaires#index"
   get "api/questionnaires/:id",                               to: "api/questionnaires#show"

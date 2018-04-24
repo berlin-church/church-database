@@ -6,6 +6,7 @@
       <div class="card-content">
         <span class="card-title">Join the Event</span>
         <%= form_for(@member) do |f| %>
+          <%= hidden_field_tag :id, @id %>
           <div class="row">
             <div class="input-field col s6">
               <%= f.text_field :first_name, className: "validate" %>
@@ -17,9 +18,19 @@
             </div>
           </div>
           <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s6">
               <%= f.email_field :email, className: "validate" %>
               <%= f.label :email %>
+            </div>
+            <div class="input-field col s6">
+              <%= f.phone_field :phone1, className: "validate" %>
+              <%= f.label :phone %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= text_field_tag :comment, @comment %>
+              <%= label_tag :comment %>
             </div>
           </div>
           <div class="row">

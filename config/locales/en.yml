@@ -1,5 +1,10 @@
 ---
 en:
+  events:
+    not_found: 'Event not found'
+  members:
+    created: 'Member created'
+    invalid: 'Invalid data'
   users: 'Users'
   activerecord:
     errors:
