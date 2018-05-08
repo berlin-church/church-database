@@ -3,10 +3,12 @@ class MembersController < ApplicationController
   end
 
   def create
-    return render_event_not_found unless @event = Event.find_by(id: params[:id])
+    byebug
+    return render_event_not_found unless @event_instance = EventInstance.find_by(id: params[:event_instance_id])
 
     load_or_create_member
     join_event
+    answer_questions
 
     if @member.save
       render_member_created
@@ -16,6 +18,12 @@ class MembersController < ApplicationController
   end
 
   private
+
+  def answer_questions
+    questions_params.each do |question, answer|
+      @member.answer_question(question, answer)
+    end
+  end
 
   def render_member_errors
     flash.now[:error] = @member.errors.full_messages.flatten.join(", ")
@@ -38,13 +46,16 @@ class MembersController < ApplicationController
   end
 
   def join_event
-    instance = @event.current_event_instance
-    return if @member.attendees.where(event_instance_id: instance.id).any?
+    return if @member.attendees.where(event_instance_id: @event_instance.id).any?
 
-    @member.attendees << Attendee.new(member_id: @member.id, event_instance_id: instance.id)
+    @member.attendees << Attendee.new(member_id: @member.id, event_instance_id: @event_instance.id)
   end
 
   def member_params
     params.require(:member).permit(:first_name, :last_name, :email, :phone1)
+  end
+
+  def questions_params
+    params["questions"]
   end
 end

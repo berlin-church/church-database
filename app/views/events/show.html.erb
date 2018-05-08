@@ -1,8 +1,8 @@
 <%= render "shared/nav" %>
 
-<% @events&.each_slice(3) do |events| %>
+<% @event.event_instances&.each_slice(3) do |instances| %>
   <div class="row">
-    <% events.each do |event| %>
+    <% instances.each do |event| %>
     <div class="col s12 m4">
       <div class="card">
         <div class="card-image">
@@ -13,12 +13,10 @@
           <p><%= event.description %></p>
         </div>
         <div class="card-action">
-          <% if event.event_instances.count == 0 %>
-            <a href="#" title="There is no instance of this event yet">Coming soon</a>
-          <% elsif event.event_instances.count == 1 %>
-            <a href="/events/<%= event.event_instances.last.id %>/register">Register</a>
+          <% if event.event_instances.count == 1 %>
+            <a href="/events/<%= event.event_instances.last.id %>/register">See all</a>
           <% else %>
-            <a href="/events/<%= event.id %>">See all</a>
+            <a href="/events/<%= event.id %>">Register</a>
           <% end %>
         </div>
       </div>

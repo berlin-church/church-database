@@ -1,11 +1,14 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all
+    @events = Event.where(is_visible: true)
+  end
+
+  def show
+    @event = Event.find_by id: params[:id]
   end
 
   def register
     @member = Member.new
-    @id = params[:id]
-    @event = Event.find_by id: @id
+    @event_instance = EventInstance.find_by id: params[:id]
   end
 end

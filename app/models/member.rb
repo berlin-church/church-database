@@ -4,6 +4,8 @@ class Member < ApplicationRecord
   belongs_to :admin_user, foreign_key: :created_by
   has_one :address
   has_many :attendees
+  has_many :option_answers
+
   accepts_nested_attributes_for :address
   validates_format_of :first_name, :last_name, with: /\A[^0-9`!@#\$%\^&*+_=]+\z/
   validates :first_name, presence: true
@@ -14,5 +16,9 @@ class Member < ApplicationRecord
 
   def name
     "#{first_name} #{last_name}"
+  end
+
+  def answer_question(question, answer)
+    self.option_answers << OptionAnswer.new(question_option_id: answer)
   end
 end
