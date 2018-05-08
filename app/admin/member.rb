@@ -37,6 +37,7 @@ ActiveAdmin.register Member do
     column :gender
     column :status
     column :updated_at
+    column :admin_user
     actions
   end
 
