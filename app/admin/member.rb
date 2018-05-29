@@ -38,6 +38,9 @@ ActiveAdmin.register Member do
     column :status
     column :updated_at
     column :admin_user
+    column :last_comment_created do |member|
+      ActiveAdmin::Comment.where(resource_id: member.id, resource_type: "Member").last&.created_at
+    end
     actions
   end
 
