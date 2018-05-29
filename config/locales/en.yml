@@ -3,8 +3,9 @@ en:
   events:
     not_found: 'Event not found'
   members:
-    created: 'Member created'
+    created: 'Registration successful'
     invalid: 'Invalid data'
+    successfully_registred: 'Registration successful'
   users: 'Users'
   activerecord:
     errors:

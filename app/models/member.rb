@@ -5,6 +5,7 @@ class Member < ApplicationRecord
   has_one :address
   has_many :attendees
   has_many :option_answers
+  has_many :question_answers
 
   accepts_nested_attributes_for :address
   validates_format_of :first_name, :last_name, with: /\A[^0-9`!@#\$%\^&*+_=]+\z/
@@ -18,7 +19,12 @@ class Member < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  def answer_question(question, answer)
-    self.option_answers << OptionAnswer.new(question_option_id: answer)
+  def answer_question(question_id, answer)
+    question = Question.find_by(id: question_id.to_i)
+    if question.answer_type == "open"
+      self.question_answers << QuestionAnswer.new(question: question, member: self, answer: answer)
+    else
+      self.option_answers << OptionAnswer.new(question_option_id: answer)
+    end
   end
 end

@@ -8,6 +8,7 @@ class EventInstance < ApplicationRecord
 
   scope :upcoming, -> { includes(:event).where('start_time >= ?', DateTime.now) }
   scope :by_event, ->(event_id) { includes(:event).where(event_id: event_id) }
+  scope :upcoming, ->() { where("start_time >= ?", Time.now) }
 
   def name
     "#{event&.name} (#{start_time&.day}.#{start_time&.month}.#{start_time&.year})"

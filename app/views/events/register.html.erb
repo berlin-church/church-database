@@ -4,7 +4,7 @@
   <div class="col offset-m3 s12 m6">
     <div id="event-form" class="card">
       <div class="card-content">
-        <span class="card-title">Join the <%= @event_instance.event.name %></span>
+        <span class="card-title">Join the <%= @event_instance.name %></span>
         <%= form_for(@member) do |f| %>
           <%= hidden_field_tag :event_instance_id, @event_instance.id %>
           <div class="row">
@@ -45,6 +45,10 @@
                       <span><%= option.title %></span>
                     </label>
                   </p>
+                <% end %>
+
+                <% if question.answer_type == "open" %>
+                  <%= text_field_tag "questions[#{question.id}]" %>
                 <% end %>
               <% end %>
             <% end %>

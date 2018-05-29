@@ -1,23 +1,24 @@
 <%= render "shared/nav" %>
 
-<% @event.event_instances&.each_slice(3) do |instances| %>
+<% @event.event_instances&.upcoming&.each_slice(3) do |instances| %>
   <div class="row">
-    <% instances.each do |event| %>
+    <% instances.each do |instance| %>
     <div class="col s12 m4">
       <div class="card">
         <div class="card-image">
-          <img src="<%= event.image_url %>">
-          <span class="card-title"><%= event.name %></span>
+          <img src="<%= instance.image_url %>">
+          <span class="card-title"><%= instance.name %></span>
         </div>
         <div class="card-content">
-          <p><%= event.description %></p>
+          <p><%= instance.description %></p>
+          <br/>
+          <p>
+            <label>Start </label><%= instance.start_time.strftime("%H:%M")%>
+            <label>at </label><%= instance.address&.display_name %>
+          </p>
         </div>
         <div class="card-action">
-          <% if event.event_instances.count == 1 %>
-            <a href="/events/<%= event.event_instances.last.id %>/register">See all</a>
-          <% else %>
-            <a href="/events/<%= event.id %>">Register</a>
-          <% end %>
+          <a href="/events/<%= instance.id %>/register">Register</a>
         </div>
       </div>
     </div>

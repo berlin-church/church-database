@@ -3,12 +3,12 @@ class MembersController < ApplicationController
   end
 
   def create
-    byebug
     return render_event_not_found unless @event_instance = EventInstance.find_by(id: params[:event_instance_id])
 
     load_or_create_member
     join_event
     answer_questions
+    notify_event_leader
 
     if @member.save
       render_member_created
@@ -19,8 +19,12 @@ class MembersController < ApplicationController
 
   private
 
+  def notify_event_leader
+    
+  end
+
   def answer_questions
-    questions_params.each do |question, answer|
+    questions_params&.each do |question, answer|
       @member.answer_question(question, answer)
     end
   end
@@ -31,7 +35,7 @@ class MembersController < ApplicationController
   end
 
   def render_member_created
-    flash[:notice] = I18n.t 'members.created'
+    flash[:notice] = I18n.t 'members.successfully_registred'
     redirect_to '/events'
   end
 

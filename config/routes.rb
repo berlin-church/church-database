@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'events/index'
   get 'events',               to: "events#index"
+  get 'events/:id',           to: "events#show"
   get 'events/:id/register',  to: "events#register"
   post 'events/:id/register', to: "events#create_member"
 

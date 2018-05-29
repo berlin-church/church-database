@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508172635) do
+ActiveRecord::Schema.define(version: 20180529183849) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -93,6 +93,8 @@ ActiveRecord::Schema.define(version: 20180508172635) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "event_id"
+    t.string "image_url"
+    t.text "description"
     t.index ["address_id"], name: "index_event_instances_on_address_id"
     t.index ["event_id"], name: "index_event_instances_on_event_id"
   end
@@ -197,6 +199,16 @@ ActiveRecord::Schema.define(version: 20180508172635) do
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_option_answers_on_member_id"
     t.index ["question_option_id"], name: "index_option_answers_on_question_option_id"
+  end
+
+  create_table "question_answers", force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "member_id"
+    t.text "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_question_answers_on_member_id"
+    t.index ["question_id"], name: "index_question_answers_on_question_id"
   end
 
   create_table "question_groups", force: :cascade do |t|
