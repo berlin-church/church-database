@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 FactoryBot.define do
   sequence :email do |n|
-    "mario#{n}@example.com"
+    "mario#{n}@gemail.com"
   end
 
   factory :member do

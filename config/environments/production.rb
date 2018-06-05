@@ -63,7 +63,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
-  # the I18n.default_locale when a translation cannot be found).
+  # the I18n.default_locale when a translation cannot be found).^
   config.i18n.fallbacks = true
 
   # Send deprecation notices to registered listeners.
@@ -86,4 +86,15 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.action_dispatch.show_exceptions = false # this is the default setting in production
   config.filter_parameters << :password
+
+  config.action_mailer.default_url_options = { host: 'berlin.church', port: 80 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.mandrillapp.com',
+    port:                 587,
+    domain:               'berlin.church',
+    user_name:            ENV['SMTP_USER'],
+    password:             ENV['SMTP_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true }
 end

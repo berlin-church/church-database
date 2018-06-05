@@ -6,6 +6,7 @@ class Member < ApplicationRecord
   has_many :attendees
   has_many :option_answers
   has_many :question_answers
+  has_many :leaders
 
   accepts_nested_attributes_for :address
   validates_format_of :first_name, :last_name, with: /\A[^0-9`!@#\$%\^&*+_=]+\z/

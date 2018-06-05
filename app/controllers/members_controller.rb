@@ -20,7 +20,7 @@ class MembersController < ApplicationController
   private
 
   def notify_event_leader
-    
+    MemberMailer.new_member(@member, @event_instance, params[:comment]).deliver_now # change me to deliver_later in case we have a worker
   end
 
   def answer_questions
