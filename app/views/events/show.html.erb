@@ -1,0 +1,27 @@
+<%= render "shared/nav" %>
+
+<% @event.event_instances&.upcoming&.each_slice(3) do |instances| %>
+  <div class="row">
+    <% instances.each do |instance| %>
+    <div class="col s12 m4">
+      <div class="card">
+        <div class="card-image">
+          <img src="<%= instance.image_url %>">
+          <span class="card-title"><%= instance.name %></span>
+        </div>
+        <div class="card-content">
+          <p><%= instance.description %></p>
+          <br/>
+          <p>
+            <label>Start </label><%= instance.start_time.strftime("%H:%M")%>
+            <label>at </label><%= instance.address&.display_name %>
+          </p>
+        </div>
+        <div class="card-action">
+          <a href="/events/<%= instance.id %>/register">Register</a>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<% end %>

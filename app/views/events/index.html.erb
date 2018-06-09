@@ -1,0 +1,28 @@
+<%= render "shared/nav" %>
+
+<% @events&.each_slice(3) do |events| %>
+  <div class="row">
+    <% events.each do |event| %>
+    <div class="col s12 m4">
+      <div class="card">
+        <div class="card-image">
+          <img src="<%= event.image_url %>">
+          <span class="card-title"><%= event.name %></span>
+        </div>
+        <div class="card-content">
+          <p><%= event.description %></p>
+        </div>
+        <div class="card-action">
+          <% if event.event_instances.count == 0 %>
+            <a href="#" title="There is no instance of this event yet">Coming soon</a>
+          <% elsif event.event_instances.count == 1 %>
+            <a href="/events/<%= event.event_instances.last.id %>/register">Register</a>
+          <% else %>
+            <a href="/events/<%= event.id %>">See all</a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<% end %>

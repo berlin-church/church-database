@@ -1,36 +1,44 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
-  get "/questionnaires",                                   to: "questionnaires#index"
-  get "/questionnaires/:id",                               to: "questionnaires#show"
-  get "/questionnaires/:id/question-groups",               to: "questionnaires#question_groups"
-  get "/questionnaires/:id/relationships/question-groups", to: "questionnaires#question_groups"
+  resources :members
 
-  get "/question-groups",                             to: "question_groups#index"
-  get "/question-groups/:id",                         to: "question_groups#show"
-  get "/question-groups/:id/questions",               to: "question_groups#questions"
-  get "/question-groups/:id/relationships/questions", to: "question_groups#questions"
+  get 'events/index'
+  get 'events',               to: "events#index"
+  get 'events/:id',           to: "events#show"
+  get 'events/:id/register',  to: "events#register"
+  post 'events/:id/register', to: "events#create_member"
 
-  get "/events",                             to: "events#index"
-  get "/events/:id",                         to: "events#show"
-  get "/events/:id/instances",               to: "events#event_instances"
-  get "/events/:id/relationships/instances", to: "events#event_instances"
+  get "api/questionnaires",                                   to: "api/questionnaires#index"
+  get "api/questionnaires/:id",                               to: "api/questionnaires#show"
+  get "api/questionnaires/:id/question-groups",               to: "api/questionnaires#question_groups"
+  get "api/questionnaires/:id/relationships/question-groups", to: "api/questionnaires#question_groups"
 
-  get "/option-answers/",                to: "option_answers#index"
-  get "/option-answers/:id",             to: "option_answers#show"
+  get "api/question-groups",                                   to: "api/question_groups#index"
+  get "api/question-groups/:id",                               to: "api/question_groups#show"
+  get "api/question-groups/:id/questions",                     to: "api/question_groups#questions"
+  get "api/question-groups/:id/relationships/questions",       to: "api/question_groups#questions"
 
-  get "/question-options/",                            to: "question_options#index"
-  get "/question-options/:id",                         to: "question_options#show"
-  get "/question-options/:id/question",                to: "question_options#question"
-  get "/question-options/:id/relationships/question",  to: "question_options#question"
+  get "api/events",                                            to: "api/events#index"
+  get "api/events/:id",                                        to: "api/events#show"
+  get "api/events/:id/instances",                              to: "api/events#event_instances"
+  get "api/events/:id/relationships/instances",                to: "api/events#event_instances"
 
-  get "/questions/",                                   to: "questions#index"
-  get "/questions/:id",                                to: "questions#show"
-  get "/questions/:id/question-options",               to: "questions#question_options"
-  get "/questions/:id/relationships/question-options", to: "questions#question_options"
+  get "api/option-answers/",                                    to: "api/option_answers#index"
+  get "api/option-answers/:id",                                 to: "api/option_answers#show"
 
-  get "/option_answer/",                                   to: "option_answers#index"
-  get "/option_answer/:id",                                to: "option_answers#show"
-  get "/option_answer/:id/question-option",               to: "option_answers#question_option"
+  get "api/question-options/",                                  to: "api/question_options#index"
+  get "api/question-options/:id",                               to: "api/question_options#show"
+  get "api/question-options/:id/question",                      to: "api/question_options#question"
+  get "api/question-options/:id/relationships/question",        to: "api/question_options#question"
+
+  get "api/questions/",                                         to: "api/questions#index"
+  get "api/questions/:id",                                      to: "api/questions#show"
+  get "api/questions/:id/question-options",                     to: "api/questions#question_options"
+  get "api/questions/:id/relationships/question-options",       to: "api/questions#question_options"
+
+  get "api/option_answer/",                                     to: "api/option_answers#index"
+  get "api/option_answer/:id",                                  to: "api/option_answers#show"
+  get "api/option_answer/:id/question-option",                  to: "api/option_answers#question_option"
 
   devise_for :members
   use_doorkeeper

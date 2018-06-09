@@ -1,18 +1,14 @@
 class EventsController < ApplicationController
-  before_action :doorkeeper_authorize!
-
   def index
-    events = Event.all
-    render json: JSONAPI::Serializer.serialize(events, is_collection: true)
+    @events = Event.where(is_visible: true)
   end
 
   def show
-    event = EventInstance.find_by id: params[:id]
-    render json: JSONAPI::Serializer.serialize(event)
+    @event = Event.find_by id: params[:id]
   end
 
-  def event_instances
-    event = Event.find_by id: params[:id]
-    render json: JSONAPI::Serializer.serialize(event.event_instances, is_collection: true)
+  def register
+    @member = Member.new
+    @event_instance = EventInstance.find_by id: params[:id]
   end
 end

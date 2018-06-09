@@ -1,0 +1,21 @@
+<p>Our new member <%= @member.first_name %> <%= @member.last_name %> has just signed up for <%= @event_instance.name %></p>
+<p>
+  <table>
+    <thead>
+      <th>first name</th>
+      <th>second name</th>
+      <th>email</th>
+      <th>phone</th>
+      <th>comment</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @member.first_name %></td>
+        <td><%= @member.last_name %></td>
+        <td><%= @member.email %></td>
+        <td><%= @member.phone1 %></td>
+        <td><%= @comment %></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
