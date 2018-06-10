@@ -51,7 +51,6 @@ gem 'puma', '~> 3.0'
 
 gem 'doorkeeper'
 gem 'doorkeeper-jwt'
-gem 'jsonapi-serializers'
 
 gem 'active_admin_role'
 gem 'rack-cors', :require => 'rack/cors'
