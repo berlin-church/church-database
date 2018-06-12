@@ -12,7 +12,7 @@ ActiveAdmin.register EventInstance do
       row :cost
       row :description
       row :image_url do |instance|
-        image_tag instance.image_url
+        image_tag instance.image_url if instance.image_url
       end
       row :leaders do |instance|
         p instance.leaders&.map{|leader| "#{leader.member&.first_name} #{leader.member&.last_name}"}.join(", ")
