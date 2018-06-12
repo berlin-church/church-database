@@ -6,6 +6,10 @@ class Address < ApplicationRecord
   validates :street, :city, presence: true
 
   def display_name
-    "#{street} #{street_number}, #{city}"
+    if defined?(street_number).nil?
+      "#{street} #{street_number}, #{city}"
+    else
+      "#{street}, #{city}"
+    end
   end
 end
