@@ -15,22 +15,22 @@ ActiveAdmin.register EventInstance do
         image_tag instance.image_url
       end
       row :leaders do |instance|
-        p instance.leaders.map{|leader| "#{leader.member.first_name} #{leader.member.last_name}"}.join(", ")
+        p instance.leaders&.map{|leader| "#{leader.member&.first_name} #{leader.member&.last_name}"}.join(", ")
       end
     end
     panel :attendees do
       table_for event_instance.attendees do
         column :first_name do |attendee|
-          attendee.member.first_name
+          attendee.member&.first_name
         end
         column :last_name do |attendee|
-          attendee.member.last_name
+          attendee.member&.last_name
         end
         column :email do |attendee|
-          attendee.member.email
+          attendee.member&.email
         end
         column :phone do |attendee|
-          attendee.member.phone1
+          attendee.member&.phone1
         end
         column :created_at
       end
