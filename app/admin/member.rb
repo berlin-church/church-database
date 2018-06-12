@@ -157,7 +157,7 @@ ActiveAdmin.register Member do
     def create
       create!
       resource.created_by = current_admin_user.id
-      resource.save!
+      resource.save
     end
   end
 end
