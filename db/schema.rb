@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180605200953) do
+ActiveRecord::Schema.define(version: 20180612194807) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20180605200953) do
     t.integer "event_id"
     t.string "image_url"
     t.text "description"
+    t.string "name"
     t.index ["address_id"], name: "index_event_instances_on_address_id"
     t.index ["event_id"], name: "index_event_instances_on_event_id"
   end

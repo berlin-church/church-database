@@ -14,9 +14,6 @@ class EventInstance < ApplicationRecord
   def name_with_date
     "#{event&.name} (#{start_time&.day}.#{start_time&.month}.#{start_time&.year})"
   end
-  def name
-    "#{event&.name}"
-  end
 
   accepts_nested_attributes_for :leaders, allow_destroy: true
 end

@@ -4,6 +4,7 @@ ActiveAdmin.register EventInstance do
 
   show do
     attributes_table do
+      row :name
       row :address
       row :event
       row :start_time
@@ -39,6 +40,7 @@ ActiveAdmin.register EventInstance do
 
   form title: 'Creating / Updating' do |f|
     inputs 'Details' do
+      input :name
       input :event
       input :address
       input :start_time
@@ -56,6 +58,6 @@ ActiveAdmin.register EventInstance do
     actions
   end
 
-  permit_params :address_id, :event_id, :start_time, :end_time, :details,
+  permit_params :name, :address_id, :event_id, :start_time, :end_time, :details,
                 :cost, :image_url, :description, leaders_attributes: [:member_id, :_destroy, :id]
 end
