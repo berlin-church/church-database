@@ -49,6 +49,7 @@ ActiveAdmin.register EventInstance do
       input :cost
       input :image_url
       input :description
+      input :questionnaire
       inputs do
         has_many :leaders, allow_destroy: true do |a|
           a.input :member
@@ -58,6 +59,6 @@ ActiveAdmin.register EventInstance do
     actions
   end
 
-  permit_params :name, :address_id, :event_id, :start_time, :end_time, :details,
+  permit_params :name, :questionnaire_id, :address_id, :event_id, :start_time, :end_time, :details,
                 :cost, :image_url, :description, leaders_attributes: [:member_id, :_destroy, :id]
 end

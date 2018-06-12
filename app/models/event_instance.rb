@@ -4,7 +4,7 @@ class EventInstance < ApplicationRecord
   belongs_to :event
   has_many :attendees
   has_many :members, through: :attendees
-  has_many :questionnaires
+  belongs_to :questionnaire, optional: true
   has_many :leaders
 
   scope :upcoming, -> { includes(:event).where('start_time >= ?', DateTime.now) }

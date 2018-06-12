@@ -1,68 +1,67 @@
 <%= render "shared/nav" %>
 
 <div class="row">
-  <div class="col offset-m3 s12 m6">
-    <div id="event-form" class="card">
-      <div class="card-content">
-        <span class="card-title">Join the <%= @event_instance.name %></span>
-        <%= form_for(@member) do |f| %>
-          <%= hidden_field_tag :event_instance_id, @event_instance.id %>
-          <div class="row">
-            <div class="input-field col s6">
-              <%= f.text_field :first_name, className: "validate" %>
-              <%= f.label :first_name %>
-            </div>
-            <div class="input-field col s6">
-              <%= f.text_field :last_name, className: "validate" %>
-              <%= f.label :last_name %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s6">
-              <%= f.email_field :email, className: "validate" %>
-              <%= f.label :email %>
-            </div>
-            <div class="input-field col s6">
-              <%= f.phone_field :phone1, className: "validate" %>
-              <%= f.label :phone %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <%= text_field_tag :comment, @comment %>
-              <%= label_tag :comment %>
-            </div>
-          </div>
+    <div class="col offset-m3 s12 m6">
+        <div id="event-form" class="card">
+            <div class="card-content">
+                <span class="card-title">Join the <%= @event_instance.name %></span>
+                <%= form_for(@member) do |f| %>
+                    <%= hidden_field_tag :event_instance_id, @event_instance.id %>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <%= f.text_field :first_name, className: "validate" %>
+                            <%= f.label :first_name %>
+                        </div>
+                        <div class="input-field col s6">
+                            <%= f.text_field :last_name, className: "validate" %>
+                            <%= f.label :last_name %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <%= f.email_field :email, className: "validate" %>
+                            <%= f.label :email %>
+                        </div>
+                        <div class="input-field col s6">
+                            <%= f.phone_field :phone1, className: "validate" %>
+                            <%= f.label :phone %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <%= text_field_tag :comment, @comment %>
+                            <%= label_tag :comment %>
+                        </div>
+                    </div>
 
-          <% @event_instance.questionnaires.each do |questionnaire| %>
-            <% questionnaire.question_groups.each do |group| %>
-              <% group.questions.each do |question| %>
-                <p><%= question.title %></p>
-                <% question.question_options.each do |option| %>
-                  <p>
-                    <label>
-                      <%= radio_button_tag "questions[#{question.id}]", option.id %>
-                      <span><%= option.title %></span>
-                    </label>
-                  </p>
+
+                    <% @event_instance.questionnaire&.question_groups.each do |group| %>
+                        <% group.questions.each do |question| %>
+                            <p><%= question.title %></p>
+                            <% question.question_options.each do |option| %>
+                                <p>
+                                <label>
+                                    <%= radio_button_tag "questions[#{question.id}]", option.id %>
+                                    <span><%= option.title %></span>
+                                </label>
+                                </p>
+                            <% end %>
+
+                            <% if question.answer_type == "open" %>
+                                <%= text_field_tag "questions[#{question.id}]" %>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </div>
                 <% end %>
-
-                <% if question.answer_type == "open" %>
-                  <%= text_field_tag "questions[#{question.id}]" %>
-                <% end %>
-              <% end %>
-            <% end %>
-          <% end %>
-
-          <div class="row">
-            <div class="input-field col s12">
-              <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                <i class="material-icons right">send</i>
-              </button>
             </div>
-          </div>
-        <% end %>
-      </div>
+        </div>
     </div>
-  </div>
 </div>
