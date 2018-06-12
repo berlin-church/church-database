@@ -3,5 +3,6 @@ FactoryBot.define do
   factory :event_instance do
     address
     event
+    name "Meu Evento (..)"
   end
 end
