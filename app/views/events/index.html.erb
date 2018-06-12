@@ -6,7 +6,7 @@
     <div class="col s12 m4">
       <div class="card">
         <div class="card-image">
-          <img src="<%= event.image_url %>">
+          <img src="<%= event.image_url.blank? ? 'https://res.cloudinary.com/dkbwcwx1s/image/upload/v1528827293/placeholder.png' : event.image_url %>">
           <span class="card-title"><%= event.name %></span>
         </div>
         <div class="card-content">
