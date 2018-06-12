@@ -11,8 +11,11 @@ class EventInstance < ApplicationRecord
   scope :by_event, ->(event_id) { includes(:event).where(event_id: event_id) }
   scope :upcoming, ->() { where("start_time >= ?", Time.now) }
 
-  def name
+  def name_with_date
     "#{event&.name} (#{start_time&.day}.#{start_time&.month}.#{start_time&.year})"
+  end
+  def name
+    "#{event&.name}"
   end
 
   accepts_nested_attributes_for :leaders, allow_destroy: true

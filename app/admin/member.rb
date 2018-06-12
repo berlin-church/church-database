@@ -84,7 +84,7 @@ ActiveAdmin.register Member do
   sidebar 'Upcoming Events', only: :show do
     ul do
       EventInstance.upcoming.each do |event|
-        li event.name
+        li event.name_with_date
       end
     end
   end
