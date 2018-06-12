@@ -1,5 +1,5 @@
 ActiveAdmin.register QuestionGroup do
   menu parent: "Questionnaires"
 
-  permit_params :questionaire_id, :title, :subtitle, :postion
+  permit_params :questionnaire_id, :title, :subtitle, :position
 end
