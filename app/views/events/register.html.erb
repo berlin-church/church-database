@@ -27,31 +27,40 @@
                             <%= f.label :phone %>
                         </div>
                     </div>
+
+                    <% @event_instance.questionnaire&.question_groups&.each do |group| %>
+                        <% group.questions&.each_slice(2) do |questions| %>
+                        <div class="row">
+                          <% questions&.each do |question| %>
+                            <div class="input-field col s6">
+                              <% if question.answer_type == "open" %>
+                                <%= text_field_tag "questions[#{question.id}]" %>
+                                <label for=<%= "questions[#{question.id}]" %>>
+                                  <%= question.title %>
+                                </label>
+                              <% else %>
+                                <p><%= question.title %></p>
+                                <% question.question_options.each do |option| %>
+                                    <p>
+                                    <label>
+                                        <%= radio_button_tag "questions[#{question.id}]", option.id %>
+                                        <span><%= option.title %></span>
+                                    </label>
+                                    </p>
+                                <% end %>
+                              <% end %>
+                            </div>
+                          <% end %>
+                        </div>
+                        <% end %>
+                    <% end %>
+
                     <div class="row">
                         <div class="input-field col s12">
                             <%= text_field_tag :comment, @comment %>
                             <%= label_tag :comment %>
                         </div>
                     </div>
-
-
-                    <% @event_instance.questionnaire&.question_groups&.each do |group| %>
-                        <% group.questions.each do |question| %>
-                            <p><%= question.title %></p>
-                            <% question.question_options.each do |option| %>
-                                <p>
-                                <label>
-                                    <%= radio_button_tag "questions[#{question.id}]", option.id %>
-                                    <span><%= option.title %></span>
-                                </label>
-                                </p>
-                            <% end %>
-
-                            <% if question.answer_type == "open" %>
-                                <%= text_field_tag "questions[#{question.id}]" %>
-                            <% end %>
-                        <% end %>
-                    <% end %>
 
                     <div class="row">
                         <div class="input-field col s12">
