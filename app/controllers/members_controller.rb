@@ -45,8 +45,11 @@ class MembersController < ApplicationController
   end
 
   def load_or_create_member
-    @member   = Member.find_by email: member_params[:email]
-    @member ||= Member.new member_params
+    @member = Member.find_by email: member_params[:email]
+    if @member.nil?
+      @member = Member.new member_params
+      @member.admin_user = current_admin_user if current_admin_user
+    end
   end
 
   def join_event

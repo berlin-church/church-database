@@ -104,7 +104,7 @@ ActiveAdmin.register Member do
         member.status
       end
       row 'Created By' do
-        member.admin_user
+        member.admin_user&.name
       end
     end
 
