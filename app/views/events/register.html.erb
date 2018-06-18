@@ -35,7 +35,7 @@
                     </div>
 
 
-                    <% @event_instance.questionnaire&.question_groups.each do |group| %>
+                    <% @event_instance.questionnaire&.question_groups&.each do |group| %>
                         <% group.questions.each do |question| %>
                             <p><%= question.title %></p>
                             <% question.question_options.each do |option| %>
