@@ -10,6 +10,8 @@ class MembersController < ApplicationController
     answer_questions
     notify_event_leader
 
+    render_accept_terms_error and return unless params[:terms_accepted]
+
     if @member.save
       render_member_created
     else
@@ -31,6 +33,11 @@ class MembersController < ApplicationController
 
   def render_member_errors
     flash.now[:error] = @member.errors.full_messages.flatten.join(", ")
+    render 'events/register'
+  end
+
+  def render_accept_terms_error
+    flash.now[:error] = "The privacy policy must be accepted."
     render 'events/register'
   end
 

@@ -4,7 +4,7 @@
     <div class="col offset-m3 s12 m6">
         <div id="event-form" class="card">
             <div class="card-content">
-                <span class="card-title">Join the <%= @event_instance.name %></span>
+                <span class="card-title"><%= @event_instance.name %></span>
                 <%= form_for(@member) do |f| %>
                     <%= hidden_field_tag :event_instance_id, @event_instance.id %>
                     <div class="row">
@@ -59,6 +59,16 @@
                         <div class="input-field col s12">
                             <%= text_field_tag :comment, @comment %>
                             <%= label_tag :comment %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <p>
+                            <label>
+                              <input type="checkbox" name="terms_accepted"/>
+                              <span>I willingly submit my information understanding the privacy policy as found <a href="https://berlin.church/imprint" target="blank">here</a></span>
+                            </label>
+                            </p>
                         </div>
                     </div>
 
