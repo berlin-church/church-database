@@ -22,7 +22,7 @@ ActiveAdmin.register EventInstance do
     panel :attendees do
       table_for event_instance.attendees do
         column :first_name do |attendee|
-          attendee.member&.first_name
+          link_to attendee.member&.first_name, admin_attendee_path(attendee)
         end
         column :last_name do |attendee|
           attendee.member&.last_name

@@ -1,4 +1,4 @@
 class OptionAnswer < ApplicationRecord
   belongs_to :question_option
-  belongs_to :member
+  belongs_to :attendee
 end

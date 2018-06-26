@@ -20,12 +20,12 @@ class MembersController < ApplicationController
   private
 
   def notify_event_leader
-    MemberMailer.new_member(@member, @event_instance, params[:comment]).deliver_now # change me to deliver_later in case we have a worker
+    MemberMailer.new_member(@member, @event_instance, @attendee, params[:comment]).deliver_now # change me to deliver_later in case we have a worker
   end
 
   def answer_questions
     questions_params&.each do |question, answer|
-      @member.answer_question(question, answer)
+      @attendee.answer_question(question, answer)
     end
   end
 
@@ -55,7 +55,8 @@ class MembersController < ApplicationController
   def join_event
     return if @member.attendees.where(event_instance_id: @event_instance.id).any?
 
-    @member.attendees << Attendee.new(member_id: @member.id, event_instance_id: @event_instance.id)
+    @attendee = Attendee.new(member_id: @member.id, event_instance_id: @event_instance.id, comment: params[:comment])
+    @member.attendees << @attendee
   end
 
   def member_params

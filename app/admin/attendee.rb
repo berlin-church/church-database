@@ -2,16 +2,37 @@
 ActiveAdmin.register Attendee do
   menu parent: 'Events'
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+
+  show do
+    attributes_table do
+      row :member
+      row :event_instance
+      row :paid
+      row :canceled
+      row :comment
+      row :created_at
+      row :updated_at
+    end
+    panel "Questions" do
+      table_for attendee.option_answers do
+        column :question do |answer|
+          link_to answer.question_option.question.title, admin_question_path(answer.question_option.question)
+        end
+        column :answer do |answer|
+          answer.question_option.title
+        end
+      end
+    end
+
+    panel "Open questions" do
+      table_for attendee.question_answers do
+        column :question do |answer|
+          link_to answer.question.title, admin_question_path(answer.question)
+        end
+        column :answer do |answer|
+          answer.answer
+        end
+      end
+    end
+  end
 end
