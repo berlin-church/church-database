@@ -53,7 +53,8 @@ class MembersController < ApplicationController
   end
 
   def join_event
-    return if @member.attendees.where(event_instance_id: @event_instance.id).any?
+    @attendee = @member.attendees.where(event_instance_id: @event_instance.id).first
+    return if @attendee
 
     @attendee = Attendee.new(member_id: @member.id, event_instance_id: @event_instance.id, comment: params[:comment])
     @member.attendees << @attendee
