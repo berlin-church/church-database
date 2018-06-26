@@ -18,4 +18,25 @@
       </tr>
     </tbody>
   </table>
+
+  <table>
+    <thead>
+      <th>Question</th>
+      <th>Answer</th>
+    </thead>
+    <tbody>
+      <% @attendee.option_answers.each do |answer| %>
+        <tr>
+          <td><%= answer.question_option.question.title %></td>
+          <td><%= answer.question_option.title %></td>
+        </tr>
+      <% end %>
+      <% @attendee.question_answers.each do |answer| %>
+        <tr>
+          <td><%= answer.question.title %></td>
+          <td><%= answer.answer %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </p>

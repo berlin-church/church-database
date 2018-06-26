@@ -123,28 +123,6 @@ ActiveAdmin.register Member do
       end
     end
 
-    panel "Questions" do
-      table_for member.option_answers do
-        column :question do |answer|
-          link_to answer.question_option.question.title, admin_question_path(answer.question_option.question)
-        end
-        column :answer do |answer|
-          answer.question_option.title
-        end
-      end
-    end
-
-    panel "Open questions" do
-      table_for member.question_answers do
-        column :question do |answer|
-          link_to answer.question.title, admin_question_path(answer.question)
-        end
-        column :answer do |answer|
-          answer.answer
-        end
-      end
-    end
-
     active_admin_comments
     panel 'See the diagram below for instructions on how to follow up' do
       image_tag('follow-up-diagram.png', class: 'follow_up_diagram')

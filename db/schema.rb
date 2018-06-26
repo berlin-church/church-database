@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180612200132) do
+ActiveRecord::Schema.define(version: 20180626191307) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20180612200132) do
     t.boolean "canceled"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "comment"
     t.index ["event_instance_id"], name: "index_attendees_on_event_instance_id"
     t.index ["member_id"], name: "index_attendees_on_member_id"
   end
@@ -206,20 +207,20 @@ ActiveRecord::Schema.define(version: 20180612200132) do
 
   create_table "option_answers", force: :cascade do |t|
     t.integer "question_option_id"
-    t.integer "member_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["member_id"], name: "index_option_answers_on_member_id"
+    t.integer "attendee_id"
+    t.index ["attendee_id"], name: "index_option_answers_on_attendee_id"
     t.index ["question_option_id"], name: "index_option_answers_on_question_option_id"
   end
 
   create_table "question_answers", force: :cascade do |t|
     t.integer "question_id"
-    t.integer "member_id"
     t.text "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["member_id"], name: "index_question_answers_on_member_id"
+    t.integer "attendee_id"
+    t.index ["attendee_id"], name: "index_question_answers_on_attendee_id"
     t.index ["question_id"], name: "index_question_answers_on_question_id"
   end
 

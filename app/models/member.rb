@@ -19,13 +19,4 @@ class Member < ApplicationRecord
   def name
     "#{first_name} #{last_name}"
   end
-
-  def answer_question(question_id, answer)
-    question = Question.find_by(id: question_id.to_i)
-    if question.answer_type == "open"
-      self.question_answers << QuestionAnswer.new(question: question, member: self, answer: answer)
-    else
-      self.option_answers << OptionAnswer.new(question_option_id: answer)
-    end
-  end
 end
