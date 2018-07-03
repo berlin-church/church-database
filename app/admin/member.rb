@@ -1,13 +1,19 @@
 # frozen_string_literal: true
 ActiveAdmin.register Member do
 
+  scope :with_discarded
+
+  member_action :archive, method: :get do
+    resource.discard
+    redirect_to admin_members_path, notice: "Member #{resource.id} archived"
+  end
+
   controller do
     def scoped_collection
-      #byebug
       if current_admin_user.volunteer? || current_admin_user.guest?
-        current_admin_user.members
+        current_admin_user.members.kept
       else
-        Member.all
+        Member.kept
       end
     end
   end
@@ -42,6 +48,9 @@ ActiveAdmin.register Member do
       ActiveAdmin::Comment.where(resource_id: member.id, resource_type: "Member").last&.created_at
     end
     column :created_at
+    column :archive do |member|
+      link_to "archive", archive_admin_member_path(member)
+    end
     actions
   end
 

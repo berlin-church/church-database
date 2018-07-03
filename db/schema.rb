@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180626194001) do
+ActiveRecord::Schema.define(version: 20180703212544) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -158,7 +158,9 @@ ActiveRecord::Schema.define(version: 20180626194001) do
     t.datetime "locked_at"
     t.integer "status", default: 0
     t.integer "created_by", default: 1
+    t.datetime "discarded_at"
     t.index ["address_id"], name: "index_members_on_address_id"
+    t.index ["discarded_at"], name: "index_members_on_discarded_at"
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["family_id"], name: "index_members_on_family_id"
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
