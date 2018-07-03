@@ -41,6 +41,7 @@ ActiveAdmin.register Member do
     column :last_comment_created do |member|
       ActiveAdmin::Comment.where(resource_id: member.id, resource_type: "Member").last&.created_at
     end
+    column :created_at
     actions
   end
 
@@ -100,6 +101,7 @@ ActiveAdmin.register Member do
       row :birthday
       row :phone1
       row :phone2
+      row :created_at
       row 'Follow-Up Status' do
         member.status
       end
