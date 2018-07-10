@@ -27,6 +27,23 @@
                             <%= f.label :phone %>
                         </div>
                     </div>
+                    <div class="row">
+                      <div class="input-field col s12 s6">
+                        <p>
+                          <%= f.label :gender %>
+                        </p>
+                        <p>
+                          <label>
+                            <%= f.radio_button :gender, "male" %>
+                            <span>Male</span>
+                          </label>
+                          <label>
+                            <%= f.radio_button :gender, "female" %>
+                            <span>Female</span>
+                          </label>
+                        </p>
+                      </div>
+                    </div>
 
                     <% @event_instance.questionnaire&.question_groups&.each do |group| %>
                         <% group.questions&.each_slice(2) do |questions| %>
