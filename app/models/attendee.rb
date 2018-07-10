@@ -2,8 +2,8 @@
 class Attendee < ApplicationRecord
   belongs_to :member
   belongs_to :event_instance
-  has_many :question_answers
-  has_many :option_answers
+  has_many :question_answers, dependent: :destroy
+  has_many :option_answers, dependent: :destroy
 
   def answer_question(question_id, answer)
     question = Question.find_by(id: question_id.to_i)
