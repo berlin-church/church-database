@@ -4,9 +4,9 @@ class Member < ApplicationRecord
   belongs_to :admin_user, foreign_key: :created_by
   has_one :address, dependent: :destroy
   has_many :attendees, dependent: :destroy
-  has_many :option_answers, dependent: :destroy
-  has_many :question_answers, dependent: :destroy
-  has_many :leaders, dependent: :destroy
+  has_many :option_answers
+  has_many :question_answers
+  has_many :leaders
 
   accepts_nested_attributes_for :address
   validates_format_of :first_name, :last_name, with: /\A[^0-9`!@#\$%\^&*+_=]+\z/
