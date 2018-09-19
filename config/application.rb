@@ -14,7 +14,7 @@ module Church
     # -- all .rb files in that directory are automatically loaded.
     config.middleware.delete Rack::Lock
 
-    config.time_zone = 'Berlin'
+    config.time_zone = ENV['TIME_ZONE'] || 'Berlin'
 
     # config.middleware.insert_before 0, "Rack::Cors" do
     #   allow do
