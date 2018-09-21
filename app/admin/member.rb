@@ -42,6 +42,22 @@ ActiveAdmin.register Member do
       ActiveAdmin::Comment.where(resource_id: member.id, resource_type: "Member").last&.created_at
     end
     column :created_at
+    column :status_changed_at
+    column "Follow-Up Period" do |member|
+      if member.status_changed_at.nil?
+        ""
+      else
+        weeks = (Date.today - member.status_changed_at.to_date).to_i / 7
+        case weeks
+        when 0
+          "less than a week"
+        when 1
+          "one week"
+        else
+          "#{weeks} weeks"
+        end
+      end
+    end
     actions
   end
 

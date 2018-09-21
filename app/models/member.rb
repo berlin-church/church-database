@@ -16,7 +16,16 @@ class Member < ApplicationRecord
 
   enum status: [:New, :in_progress, :connected, :resolved]
 
+
+  before_save :save_status_changed_date
+
   def name
     "#{first_name} #{last_name}"
+  end
+
+  private
+
+  def save_status_changed_date
+    self.status_changed_at = DateTime.now if self.status_changed? && self.status == "in_progress"
   end
 end
