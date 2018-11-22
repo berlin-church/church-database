@@ -28,20 +28,13 @@
                         </div>
                     </div>
                     <div class="row">
-                      <div class="input-field col s12 s6">
-                        <p>
-                          <%= f.label :gender %>
-                        </p>
-                        <p>
-                          <label>
-                            <%= f.radio_button :gender, "male" %>
-                            <span>Male</span>
-                          </label>
-                          <label>
-                            <%= f.radio_button :gender, "female" %>
-                            <span>Female</span>
-                          </label>
-                        </p>
+                      <div class="input-field col s12">
+                        <select name="member[gender]">
+                          <option value="" disabled selected>Choose your gender</option>
+                          <option value="male">Mr.</option>
+                          <option value="female">Ms.</option>
+                        </select>
+                        <label>Gender</label>
                       </div>
                     </div>
 

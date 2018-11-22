@@ -41,7 +41,6 @@ Rails.application.routes.draw do
   get "api/option_answer/:id/question-option",                  to: "api/option_answers#question_option"
 
   devise_for :members
-  use_doorkeeper
   # devise_for :users, ActiveAdmin::Devise.config
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
