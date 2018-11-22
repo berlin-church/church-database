@@ -55,6 +55,21 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
+## Configuration
+We use a lot of environment variables to configure this app. Here is the list of vars names:
+
+* DATABASE_NAME
+* DATABASE_USER
+* DATABASE_PASSWORD
+* RAILS_MAX_THREADS - we use this to determine the number used for the database's connection pool.
+* SMTP_ADDRESS
+* SMTP_PORT
+* SMTP_DOMAIN
+* SMTP_USER
+* SMTP_PASSWORD
+* SENTRY - The Sentry DSN string
+* SECRET_KEY_BASE - Rails secret string
+
 ## Authors
 * Giulliano Bueno
 * Jonathan Wiens

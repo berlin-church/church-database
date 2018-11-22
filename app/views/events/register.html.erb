@@ -10,11 +10,11 @@
                     <div class="row">
                         <div class="input-field col s6">
                             <%= f.text_field :first_name, className: "validate" %>
-                            <%= f.label :first_name %>
+                            <%= f.label 'First Name' %>
                         </div>
                         <div class="input-field col s6">
                             <%= f.text_field :last_name, className: "validate" %>
-                            <%= f.label :last_name %>
+                            <%= f.label 'Last Name' %>
                         </div>
                     </div>
                     <div class="row">
@@ -26,6 +26,23 @@
                             <%= f.phone_field :phone1, className: "validate" %>
                             <%= f.label :phone %>
                         </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12 s6">
+                        <p>
+                          <%= f.label :gender %>
+                        </p>
+                        <p>
+                          <label>
+                            <%= f.radio_button :gender, "male" %>
+                            <span>Male</span>
+                          </label>
+                          <label>
+                            <%= f.radio_button :gender, "female" %>
+                            <span>Female</span>
+                          </label>
+                        </p>
+                      </div>
                     </div>
 
                     <% @event_instance.questionnaire&.question_groups&.each do |group| %>
@@ -39,11 +56,21 @@
                                   <%= question.title %>
                                 </label>
                               <% else %>
-                                <p><%= question.title %></p>
+
+                                <p>
+                                  <label>
+                                    <%= question.title %>
+                                  </label>
+                                </p>
                                 <% question.question_options.each do |option| %>
                                     <p>
                                     <label>
-                                        <%= radio_button_tag "questions[#{question.id}]", option.id %>
+                                        <% if question.answer_type == "single" %>
+                                            <%= radio_button_tag "questions[#{question.id}]", option.id %>
+                                        <% end %>
+                                        <% if question.answer_type == "multiple" %>
+                                          <%= check_box_tag "questions[#{question.id}]", option.id %>
+                                        <% end %>
                                         <span><%= option.title %></span>
                                     </label>
                                     </p>
@@ -66,7 +93,7 @@
                           <p>
                             <label>
                               <input type="checkbox" name="terms_accepted"/>
-                              <span>I willingly submit my information understanding the privacy policy as found <a href="https://berlin.church/imprint" target="blank">here</a></span>
+                              <span>I willingly submit my information understanding the privacy policy as found <a href="https://berlin.church/imprint" target="blank">here</a> (updated: 25 May 2018).</span>
                             </label>
                             </p>
                         </div>

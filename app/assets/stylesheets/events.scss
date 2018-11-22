@@ -1,18 +1,33 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#event-form {
-  background-color: #fff;
+@charset "UTF-8";
+
+// #event-form {
+//   background-color: #fff;
+// }
+
+nav {
+  .brand-logo {
+    padding-left: 45%;
+  }
+  // .nav-wrapper {
+  //   background-color: #000;
+  // }
 }
 
 .brand-logo {
   img {
-    padding-left: 0.5%;
-    max-width: 10%;
+    max-width: 17%;
   }
 }
 
 @media only screen and (max-width: 992px) {
+  nav {
+    .brand-logo {
+      padding-left: 0;
+    }
+  }
   .brand-logo img {
     padding-left: 0;
     max-width: 100%;

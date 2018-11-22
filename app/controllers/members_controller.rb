@@ -11,7 +11,6 @@ class MembersController < ApplicationController
     notify_event_leader
 
     render_accept_terms_error and return unless params[:terms_accepted]
-
     if @member.save
       render_member_created
     else
@@ -63,15 +62,22 @@ class MembersController < ApplicationController
     @attendee = @member.attendees.where(event_instance_id: @event_instance.id).first
     return if @attendee
 
-    @attendee = Attendee.new(member_id: @member.id, event_instance_id: @event_instance.id, comment: params[:comment])
+    @attendee = Attendee.new(member_id: @member.id,
+                             event_instance_id: @event_instance.id,
+                             comment: params[:comment],
+                             terms_accepted: terms_accepted?)
     @member.attendees << @attendee
   end
 
   def member_params
-    params.require(:member).permit(:first_name, :last_name, :email, :phone1)
+    params.require(:member).permit(:first_name, :last_name, :email, :phone1, :gender)
   end
 
   def questions_params
     params["questions"]
+  end
+
+  def terms_accepted?
+    params[:terms_accepted] == "on"
   end
 end

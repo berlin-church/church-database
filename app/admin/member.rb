@@ -51,6 +51,22 @@ ActiveAdmin.register Member do
     column :archive do |member|
       link_to "archive", archive_admin_member_path(member)
     end
+    column :status_changed_at
+    column "Follow-Up Period" do |member|
+      if member.status_changed_at.nil?
+        ""
+      else
+        weeks = (Date.today - member.status_changed_at.to_date).to_i / 7
+        case weeks
+        when 0
+          "less than a week"
+        when 1
+          "one week"
+        else
+          "#{weeks} weeks"
+        end
+      end
+    end
     actions
   end
 
