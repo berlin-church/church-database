@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 class Member < ApplicationRecord
+  include Discard::Model
+  
   belongs_to :family, optional: true
   belongs_to :admin_user, foreign_key: :created_by
   has_one :address, dependent: :destroy

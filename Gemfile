@@ -53,6 +53,7 @@ gem 'active_admin_role'
 gem 'rack-cors', :require => 'rack/cors'
 
 gem 'resque'
+gem 'discard', '~> 1.0'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
