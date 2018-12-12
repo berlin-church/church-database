@@ -60,6 +60,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'shoulda-matchers'
   gem 'guard-rspec', require: false
+  gem 'annotate'
 end
 
 group :development do

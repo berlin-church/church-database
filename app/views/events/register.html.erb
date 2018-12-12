@@ -20,17 +20,17 @@
                     <div class="row">
                         <div class="input-field col s6">
                             <%= f.text_field :first_name, className: "validate" %>
-                            <%= f.label 'First Name' %>
+                            <%= f.label 'First Name*' %>
                         </div>
                         <div class="input-field col s6">
                             <%= f.text_field :last_name, className: "validate" %>
-                            <%= f.label 'Last Name' %>
+                            <%= f.label 'Last Name*' %>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
                             <%= f.email_field :email, className: "validate" %>
-                            <%= f.label 'Email Address' %>
+                            <%= f.label 'Email Address*' %>
                         </div>
                         <div class="input-field col s6">
                             <%= f.phone_field :phone1, className: "validate" %>
@@ -38,7 +38,16 @@
                             <span class="helper-text">Handy or WhatsApp</span>
                         </div>
                     </div>
-
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <select name="member[gender]">
+                          <option value="" disabled selected>Choose your gender</option>
+                          <option value="male">Mr.</option>
+                          <option value="female">Mrs.</option>
+                        </select>
+                        <label>Gender*</label>
+                      </div>
+                    </div>
                     <% @event_instance.questionnaire&.question_groups&.each do |group| %>
                         <% group.questions&.each_slice(2) do |questions| %>
                         <div class="row">

@@ -1,4 +1,21 @@
 # frozen_string_literal: true
+
+# == Schema Information
+#
+# Table name: attendees
+#
+#  id                :integer          not null, primary key
+#  form_reply        :text
+#  paid              :boolean
+#  member_id         :integer
+#  event_instance_id :integer
+#  canceled          :boolean
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  comment           :text
+#  terms_accepted    :boolean
+#
+
 class Attendee < ApplicationRecord
   belongs_to :member
   belongs_to :event_instance
