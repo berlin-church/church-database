@@ -8,10 +8,10 @@ class MembersController < ApplicationController
     load_or_create_member
     join_event
     answer_questions
-    notify_event_leader
 
     render_accept_terms_error and return unless params[:terms_accepted]
     if @member.save
+      notify_event_leader
       render_member_created
     else
       render_member_errors
