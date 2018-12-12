@@ -22,10 +22,11 @@
 class EventInstance < ApplicationRecord
   belongs_to :address
   belongs_to :event
-  has_many :attendees
-  has_many :members, through: :attendees
   belongs_to :questionnaire, optional: true
-  has_many :leaders
+
+  has_many :leaders,   dependent: :destroy
+  has_many :attendees, dependent: :destroy
+  has_many :members, through: :attendees
 
   scope :upcoming, -> { includes(:event).where('start_time >= ?', DateTime.now) }
   scope :by_event, ->(event_id) { includes(:event).where(event_id: event_id) }
