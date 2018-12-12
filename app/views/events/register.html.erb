@@ -8,6 +8,16 @@
                 <%= form_for(@member) do |f| %>
                     <%= hidden_field_tag :event_instance_id, @event_instance.id %>
                     <div class="row">
+                      <div class="input-field col s12">
+                        <select name="member[gender]">
+                          <option value="" disabled selected></option>
+                          <option value="male">Mr.</option>
+                          <option value="female">Mrs.</option>
+                        </select>
+                        <label>Title</label>
+                      </div>
+                    </div>
+                    <div class="row">
                         <div class="input-field col s6">
                             <%= f.text_field :first_name, className: "validate" %>
                             <%= f.label 'First Name*' %>
@@ -38,7 +48,6 @@
                         <label>Gender*</label>
                       </div>
                     </div>
-
                     <% @event_instance.questionnaire&.question_groups&.each do |group| %>
                         <% group.questions&.each_slice(2) do |questions| %>
                         <div class="row">
