@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col offset-m3 s12 m6">
-        <div id="event-form" class="card">
+        <div id="event-form" class="card uppercase">
             <div class="card-content">
                 <span class="card-title"><%= @event_instance.name %></span>
                 <%= form_for(@member) do |f| %>
@@ -17,21 +17,21 @@
                           <option value="male">Mr.</option>
                           <option value="female">Mrs.</option>
                         </select>
-                        
+
                       </div>
                         <div class="input-field col s5">
                             <%= f.text_field :first_name, className: "validate" %>
-                            <%= f.label 'FIRST NAME *' %>
+                            <%= f.label 'First Name *' %>
                         </div>
                         <div class="input-field col s5">
                             <%= f.text_field :last_name, className: "validate" %>
-                            <%= f.label 'Last Name*' %>
+                            <%= f.label 'Last Name *' %>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
                             <%= f.email_field :email, className: "validate" %>
-                            <%= f.label 'Email Address*' %>
+                            <%= f.label 'Email Address *' %>
                         </div>
                         <div class="input-field col s6">
                             <%= f.phone_field :phone1, className: "validate" %>
