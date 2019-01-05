@@ -42,7 +42,7 @@ class MembersController < ApplicationController
 
   def render_member_created
     flash[:notice] = I18n.t 'members.successfully_registred'
-    redirect_to '/events'
+    redirect_to 'https://berlin.church/registrations'
   end
 
   def render_event_not_found
