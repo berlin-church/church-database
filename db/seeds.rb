@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', role: 99)
 
 member = Member.create(
   first_name: 'Mario',
@@ -8,7 +7,6 @@ member = Member.create(
   birthday: 35.years.ago,
   email: "mario@bros.com",
   phone1: "4911111111",
-  password: "123456",
   password_confirmation: "123456"
 )
 
@@ -65,4 +63,4 @@ QuestionOption.create(
   title: "No",
   position: 1
 )
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'admin1@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
