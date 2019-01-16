@@ -150,6 +150,22 @@ ActiveAdmin.register Member do
       end
     end
 
+    panel :attendancies do
+      table_for member.attendees do
+        column :id
+        column :form_reply
+        column :paid
+        column :event_instance do |attendee|
+          attendee.event_instance&.name_with_date
+        end
+        column :canceled
+        column :comment
+        column :created_at
+        column :updated_at
+        column :terms_accepted
+      end
+    end
+
     active_admin_comments
     panel 'See the diagram below for instructions on how to follow up' do
       image_tag('follow-up-diagram.png', class: 'follow_up_diagram')
