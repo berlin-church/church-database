@@ -87,7 +87,7 @@ Rails.application.configure do
   config.action_dispatch.show_exceptions = false # this is the default setting in production
   config.filter_parameters << :password
 
-  config.action_mailer.default_url_options = { host: 'berlin.church', port: 80 }
+  config.action_mailer.default_url_options = { host: 'register.berlin.church', port: 80 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              ENV['SMTP_ADDRESS'],
