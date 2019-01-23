@@ -56,7 +56,7 @@ QuestionOption.create(
   position: 0
 )
 
-QuestionOption.create(3cd2f5aa2df76ceb37f21a7f2ad5065c855792b3
+QuestionOption.create(
   question_id: question.id,
   title: "No",
   position: 1
