@@ -61,4 +61,4 @@ QuestionOption.create(
   title: "No",
   position: 1
 )
-AdminUser.create!(email: 'admin1@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'admin1@example.com', password: 'password', password_confirmation: 'password', role:"admin") if Rails.env.development?
