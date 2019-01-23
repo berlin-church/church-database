@@ -7,7 +7,6 @@ member = Member.create(
   birthday: 35.years.ago,
   email: "mario@bros.com",
   phone1: "4911111111",
-  password_confirmation: "123456"
 )
 
 address = Address.create(
@@ -33,7 +32,6 @@ event_instance = EventInstance.create(
 )
 
 questionnaire = Questionnaire.create(
-  event_instance_id: event_instance.id,
   name: "Get to know",
   position: 0
 )
