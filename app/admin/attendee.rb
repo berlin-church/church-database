@@ -35,4 +35,12 @@ ActiveAdmin.register Attendee do
       end
     end
   end
+
+  permit_params :member_id,
+                :event_instance_id,
+                :form_reply,
+                :canceled,
+                :paid,
+                :comment,
+                :terms_accepted
 end
