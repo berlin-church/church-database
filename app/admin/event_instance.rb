@@ -2,6 +2,16 @@
 ActiveAdmin.register EventInstance do
   menu parent: 'Events'
 
+  index do
+    selectable_column
+    id_column
+    column :event
+    column :name
+    column :start_time
+    column :end_time
+    actions
+  end
+
   show do
     attributes_table do
       row :name
@@ -19,21 +29,50 @@ ActiveAdmin.register EventInstance do
         p instance.leaders&.map{|leader| "#{leader.member&.first_name} #{leader.member&.last_name}"}.join(", ")
       end
     end
-    panel :attendees do
-      table_for event_instance.attendees do
-        column :first_name do |attendee|
-          link_to attendee.member&.first_name, admin_attendee_path(attendee)
+
+    attributes_table title: 'Attendees' do
+      event_instance.attendees.each do |attendee|
+        row "#{attendee.member&.first_name} #{attendee.member&.last_name}" do
+          tabs do
+            tab :details do
+              table_for [attendee] do
+                column :id do |attendee|
+                  link_to attendee.id, admin_attendee_path(attendee)
+                end
+                column :email do |attendee|
+                  attendee.member&.email
+                end
+                column :phone do |attendee|
+                  attendee.member&.phone1
+                end
+                column :created_at
+              end
+            end
+            tab :answers do
+              panel "Questions" do
+                table_for attendee.option_answers do
+                  column :question do |answer|
+                    link_to answer.question_option.question.title, admin_question_path(answer.question_option.question)
+                  end
+                  column :answer do |answer|
+                    answer.question_option.title
+                  end
+                end
+              end
+
+              panel "Open questions" do
+                table_for attendee.question_answers do
+                  column :question do |answer|
+                    link_to answer.question.title, admin_question_path(answer.question)
+                  end
+                  column :answer do |answer|
+                    answer.answer
+                  end
+                end
+              end
+            end
+          end
         end
-        column :last_name do |attendee|
-          attendee.member&.last_name
-        end
-        column :email do |attendee|
-          attendee.member&.email
-        end
-        column :phone do |attendee|
-          attendee.member&.phone1
-        end
-        column :created_at
       end
     end
   end
