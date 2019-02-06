@@ -52,27 +52,21 @@ ActiveAdmin.register EventInstance do
               end
             end
             tab :answers do
-              panel "Questions" do
-                table_for attendee.option_answers do
-                  column :question do |answer|
-                    link_to answer.question_option.question.title, admin_question_path(answer.question_option.question)
-                  end
-                  column :answer do |answer|
-                    answer.question_option.title
-                  end
-                end
-              end
 
-              panel "Open questions" do
-                table_for attendee.question_answers do
-                  column :question do |answer|
-                    link_to answer.question.title, admin_question_path(answer.question)
-                  end
-                  column :answer do |answer|
-                    answer.answer
+              tab "Form Answers" do
+                panel "" do
+                  answers = attendee.option_answers.map{|answer| [answer.question_option.question.title, answer.question_option.title]}
+                  attendee.question_answers.each{|answer| answers << [answer.question.title, answer.answer]}
+
+                  table_for answers do
+                    column :question do |answer|
+                      answer[0]
+                    end
+                    column :answer do |answer|
+                      answer[1]
+                    end
                   end
                 end
-              end
             end
           end
         end
