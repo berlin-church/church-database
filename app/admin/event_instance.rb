@@ -36,8 +36,11 @@ ActiveAdmin.register EventInstance do
           tabs do
             tab :details do
               table_for [attendee] do
-                column :id do |attendee|
+                column :attendee do |attendee|
                   link_to attendee.id, admin_attendee_path(attendee)
+                end
+                column :member do |attendee|
+                  link_to attendee.member_id, admin_member_path(attendee.member)
                 end
                 column :email do |attendee|
                   attendee.member&.email
@@ -75,6 +78,7 @@ ActiveAdmin.register EventInstance do
         end
       end
     end
+
   end
 
   form title: 'Creating / Updating' do |f|
