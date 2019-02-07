@@ -2,6 +2,16 @@
 ActiveAdmin.register EventInstance do
   menu parent: 'Events'
 
+  index do
+    selectable_column
+    id_column
+    column :event
+    column :name
+    column :start_time
+    column :end_time
+    actions
+  end
+
   show do
     attributes_table do
       row :name
@@ -19,23 +29,50 @@ ActiveAdmin.register EventInstance do
         p instance.leaders&.map{|leader| "#{leader.member&.first_name} #{leader.member&.last_name}"}.join(", ")
       end
     end
-    panel :attendees do
-      table_for event_instance.attendees do
-        column :first_name do |attendee|
-          link_to attendee.member&.first_name, admin_attendee_path(attendee)
+
+    attributes_table title: 'Attendees' do
+      event_instance.attendees.each do |attendee|
+        row "#{attendee.member&.first_name} #{attendee.member&.last_name}" do
+          tabs do
+            tab :details do
+              table_for [attendee] do
+                column :attendee do |attendee|
+                  link_to attendee.id, admin_attendee_path(attendee)
+                end
+                column :member do |attendee|
+                  link_to attendee.member_id, admin_member_path(attendee.member)
+                end
+                column :email do |attendee|
+                  attendee.member&.email
+                end
+                column :phone do |attendee|
+                  attendee.member&.phone1
+                end
+                column :created_at
+              end
+            end
+            tab :answers do
+
+              tab "Form Answers" do
+                panel "" do
+                  answers = attendee.option_answers.map{|answer| [answer.question_option.question.title, answer.question_option.title]}
+                  attendee.question_answers.each{|answer| answers << [answer.question.title, answer.answer]}
+
+                  table_for answers do
+                    column :question do |answer|
+                      answer[0]
+                    end
+                    column :answer do |answer|
+                      answer[1]
+                    end
+                  end
+                end
+            end
+          end
         end
-        column :last_name do |attendee|
-          attendee.member&.last_name
-        end
-        column :email do |attendee|
-          attendee.member&.email
-        end
-        column :phone do |attendee|
-          attendee.member&.phone1
-        end
-        column :created_at
       end
     end
+
   end
 
   form title: 'Creating / Updating' do |f|

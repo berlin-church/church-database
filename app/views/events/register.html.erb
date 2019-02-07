@@ -43,7 +43,7 @@
                         <% group.questions&.each_slice(2) do |questions| %>
                         <div class="row">
                           <% questions&.each do |question| %>
-                            <div class="input-field col">
+                            <div class="input-field col s6">
                               <% if question.answer_type == "open" %>
                                 <%= text_field_tag "questions[#{question.id}]" %>
                                 <label for=<%= "questions[#{question.id}]" %>>

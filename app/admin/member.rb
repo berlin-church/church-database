@@ -151,19 +151,55 @@ ActiveAdmin.register Member do
     end
 
     panel :attendancies do
-      table_for member.attendees do
-        column :id
-        column :form_reply
-        column :paid
-        column :event_instance do |attendee|
-          attendee.event_instance&.name_with_date
+      # table_for member.attendees do
+      #   column :id
+      #   column :form_reply
+      #   column :paid
+      #   column :event_instance do |attendee|
+      #     attendee.event_instance&.name
+      #   end
+      #   column :canceled
+      #   column :comment
+      #   column :created_at
+      #   column :updated_at
+      #   column :terms_accepted
+      # end
+
+      attributes_table title: 'Attendees' do
+        member.attendees.each do |attendee|
+          row "#{attendee.event_instance.name}" do
+            tabs do
+              tab :details do
+                table_for [attendee] do
+                  column :id
+                  column :paid
+                  column :canceled
+                  column :comment
+                  column :created_at
+                  column :updated_at
+                  column :terms_accepted
+                end
+              end
+              tab "Form Answers" do
+                panel "" do
+                  answers = attendee.option_answers.map{|answer| [answer.question_option.question.title, answer.question_option.title]}
+                  attendee.question_answers.each{|answer| answers << [answer.question.title, answer.answer]}
+
+                  table_for answers do
+                    column :question do |answer|
+                      answer[0]
+                    end
+                    column :answer do |answer|
+                      answer[1]
+                    end
+                  end
+                end
+              end
+            end
+          end
         end
-        column :canceled
-        column :comment
-        column :created_at
-        column :updated_at
-        column :terms_accepted
       end
+
     end
 
     active_admin_comments
