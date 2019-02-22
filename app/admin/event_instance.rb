@@ -95,7 +95,7 @@ ActiveAdmin.register EventInstance do
     end
     actions
   end
-
   permit_params :name, :questionnaire_id, :address_id, :event_id, :start_time, :end_time, :details,
                 :cost, :image_url, :description, leaders_attributes: [:member_id, :_destroy, :id]
+end
 end
