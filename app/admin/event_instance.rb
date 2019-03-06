@@ -52,27 +52,24 @@ ActiveAdmin.register EventInstance do
               end
             end
             tab :answers do
+              panel "" do
+                answers = attendee.option_answers.map{|answer| [answer.question_option.question.title, answer.question_option.title]}
+                attendee.question_answers.each{|answer| answers << [answer.question.title, answer.answer]}
 
-              tab "Form Answers" do
-                panel "" do
-                  answers = attendee.option_answers.map{|answer| [answer.question_option.question.title, answer.question_option.title]}
-                  attendee.question_answers.each{|answer| answers << [answer.question.title, answer.answer]}
-
-                  table_for answers do
-                    column :question do |answer|
-                      answer[0]
-                    end
-                    column :answer do |answer|
-                      answer[1]
-                    end
+                table_for answers do
+                  column :question do |answer|
+                    answer[0]
+                  end
+                  column :answer do |answer|
+                    answer[1]
                   end
                 end
+              end
             end
           end
         end
       end
     end
-
   end
 
   form title: 'Creating / Updating' do |f|
@@ -95,7 +92,7 @@ ActiveAdmin.register EventInstance do
     end
     actions
   end
+
   permit_params :name, :questionnaire_id, :address_id, :event_id, :start_time, :end_time, :details,
                 :cost, :image_url, :description, leaders_attributes: [:member_id, :_destroy, :id]
-end
 end
