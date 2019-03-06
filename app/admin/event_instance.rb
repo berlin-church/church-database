@@ -51,8 +51,7 @@ ActiveAdmin.register EventInstance do
                 column :created_at
               end
             end
-            tab :answers do
-
+            tabs :answers do
               tab "Form Answers" do
                 panel "" do
                   answers = attendee.option_answers.map{|answer| [answer.question_option.question.title, answer.question_option.title]}
