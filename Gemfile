@@ -58,7 +58,7 @@ gem 'discard', '~> 1.0'
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 4.0.1'
   gem 'guard-rspec', require: false
   gem 'annotate'
 end

@@ -195,7 +195,7 @@ GEM
       activerecord
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
-    libv8 (3.16.14.19-x86_64-linux)
+    libv8 (3.16.14.19)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -331,8 +331,8 @@ GEM
     sentry-raven (2.7.4)
       faraday (>= 0.7.6, < 1.0)
     shellany (0.0.1)
-    shoulda-matchers (3.1.2)
-      activesupport (>= 4.0.0)
+    shoulda-matchers (4.0.1)
+      activesupport (>= 4.2.0)
     sinatra (2.0.4)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -431,7 +431,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sentry-raven
-  shoulda-matchers
+  shoulda-matchers (~> 4.0.1)
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

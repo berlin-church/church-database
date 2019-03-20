@@ -32,6 +32,7 @@ class AdminUser < ApplicationRecord
          # :lockable, :timeoutable
 
   has_many :members, foreign_key: :created_by
+  belongs_to :member, optional: true
 
   def name
     "#{first_name} #{last_name}"

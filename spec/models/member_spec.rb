@@ -40,13 +40,17 @@
 
 require 'rails_helper'
 
-describe Member do
+describe Member, type: :model do
   let(:family) { FactoryBot.create :family }
   let(:member) { FactoryBot.create :member, family: family }
 
-  context 'has a family' do
-    it 'has reference for the family' do
-      expect(member.family).not_to be_nil
-    end
+  context 'associations' do
+    it { is_expected.to have_one(:address) }
+    # it { is_expected.to belong_to(:family) }
+    it { is_expected.to have_many(:attendees) }
+    it { is_expected.to have_many(:option_answers) }
+    it { is_expected.to have_many(:question_answers) }
+    it { is_expected.to have_many(:leaders) }
+    it { is_expected.to have_one(:admin_user) }
   end
 end
