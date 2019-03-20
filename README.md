@@ -7,6 +7,13 @@ The 'Church Database' App is a simple rails address App built with [activeadmin]
 
 ## Getting Started
 
+### Prerequisites
+
+* Ruby 2.4.0
+* Rails 5
+* MySQL or Postgres
+
+### Local instalation
 To get started you'll need
  * rvm or rbenv
 
@@ -22,11 +29,14 @@ bundle exec rails s
 
 The App should run on http://localhost:3000/admin
 
-### Prerequisites
+### Docker
 
-* Ruby 2.4.0
-* Rails 5
-* MySQL or Postgres
+```
+docker build -t bicc .
+docker run --name bicc-ruby -p 3000:3000 -v "$PWD":/usr/src/app -w /usr/src/app bicc
+```
+The App should run on http://localhost:3000/admin
+
 
 ## Running the tests
 
