@@ -48,7 +48,12 @@ class Member < ApplicationRecord
   has_many :option_answers, through: :attendees
   has_many :question_answers, through: :attendees
   has_many :leaders
-  has_one :admin_user, dependent: :nullify
+  has_one :access_account,
+          class_name: AdminUser.name,
+          foreign_key: :member_id,
+          dependent: :nullify
+
+  accepts_nested_attributes_for :access_account
 
   accepts_nested_attributes_for :address
   validates_format_of :first_name, :last_name, with: /\A[^0-9`!@#\$%\^&*+_=]+\z/
@@ -57,7 +62,6 @@ class Member < ApplicationRecord
   validates :email, uniqueness: true, allow_blank: false, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
   enum status: [:New, :in_progress, :connected, :resolved]
-
 
   before_save :save_status_changed_date
 

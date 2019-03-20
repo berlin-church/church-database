@@ -31,7 +31,8 @@ ActiveAdmin.register Member do
                 :password_confirmation,
                 :created_by,
                 :status,
-                address_attributes: [:id, :street, :street_number, :zip_code, :city, :country, _destroy: true]
+                address_attributes: [:id, :street, :street_number, :zip_code, :city, :country, _destroy: true],
+                access_account_attributes: [:id, :email, :password, :first_name, :last_name, :role, _destroy: true]
 
   index do
     selectable_column
@@ -88,6 +89,16 @@ ActiveAdmin.register Member do
           a.input :country, priority_countries: ['DE']
         end
       end
+
+      f.inputs 'Admin Account Information', for: [:access_account, f.object.access_account || AdminUser.new] do |s|
+        s.input :email, as: :string, input_html: { value: s.object&.email || f.object&.email }
+        s.input :first_name, as: :hidden, input_html: { value: f.object&.first_name }
+        s.input :last_name, as: :hidden, input_html: { value: f.object&.last_name }
+        s.input :password, as: :string
+        s.input :role, as: :select, collection: [['guest', 'guest'], ['leader', 'leader']]
+        s.actions
+      end
+
       input :status, as: :radio unless f.object.new_record?
       li "Created at #{f.object.created_at}" unless f.object.new_record?
     end
@@ -151,20 +162,6 @@ ActiveAdmin.register Member do
     end
 
     panel :attendancies do
-      # table_for member.attendees do
-      #   column :id
-      #   column :form_reply
-      #   column :paid
-      #   column :event_instance do |attendee|
-      #     attendee.event_instance&.name
-      #   end
-      #   column :canceled
-      #   column :comment
-      #   column :created_at
-      #   column :updated_at
-      #   column :terms_accepted
-      # end
-
       attributes_table title: 'Attendees' do
         member.attendees.each do |attendee|
           row "#{attendee.event_instance.name}" do
