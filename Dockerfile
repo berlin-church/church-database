@@ -8,11 +8,5 @@ WORKDIR /usr/src/app
 COPY . .
 
 COPY Gemfile Gemfile.lock ./
-RUN gem install bundler && \
-  gem install rails && \
-  bundle config --delete frozen && \
-  bundle install && \
-  bundle exec rake db:migrate --trace && \
-  bundle exec rake db:seed --trace
 
-CMD ["bundle exec rails s"]
+CMD ["./start.sh"]
