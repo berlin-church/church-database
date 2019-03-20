@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_raven_context
 
+  def access_denied(exception)
+    redirect_to "/", alert: exception.message
+  end
+
   private
 
   def set_raven_context
