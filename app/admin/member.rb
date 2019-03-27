@@ -10,11 +10,7 @@ ActiveAdmin.register Member do
 
   controller do
     def scoped_collection
-      if current_admin_user.volunteer? || current_admin_user.guest?
-        current_admin_user.members.kept
-      else
-        Member.kept
-      end
+      current_admin_user.admin? ? Member.kept : current_admin_user.members.kept
     end
   end
 
