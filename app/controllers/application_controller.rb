@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :set_raven_context
 
   def access_denied(exception)
-    redirect_to "/", alert: exception.message
+    redirect_to "/events", alert: exception.message
   end
 
   private
