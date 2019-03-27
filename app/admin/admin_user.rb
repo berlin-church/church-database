@@ -5,12 +5,7 @@ ActiveAdmin.register AdminUser do
 
   controller do
     def scoped_collection
-      #byebug
-      if current_admin_user.volunteer? || current_admin_user.guest?
-        AdminUser.where(id: current_admin_user.id)
-      else
-        AdminUser.all
-      end
+      current_admin_user.admin? ? AdminUser.all : AdminUser.where(id: current_admin_user.id)
     end
   end
 
@@ -20,9 +15,7 @@ ActiveAdmin.register AdminUser do
     column :first_name
     column :last_name
     column :email
-    # column :current_sign_in_at
     column :sign_in_count
-    # column :created_at
     actions
   end
 
