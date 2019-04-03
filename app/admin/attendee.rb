@@ -2,6 +2,15 @@
 ActiveAdmin.register Attendee do
   menu parent: 'Events'
 
+  controller do
+    def scoped_collection
+      if current_admin_user.admin?
+        Attendee.all
+      else
+        Attendee.where(member_id: current_admin_user&.member&.id)
+      end
+    end
+  end
 
   show do
     attributes_table do
