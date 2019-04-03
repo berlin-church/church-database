@@ -61,6 +61,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'guard-rspec', require: false
   gem 'annotate'
+  gem 'rubocop', require: false
 end
 
 group :development do

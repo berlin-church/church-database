@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 ActiveAdmin.register AdminUser do
   role_changeable
   permit_params :email, :password, :password_confirmation, :first_name, :last_name, :role
@@ -56,7 +57,7 @@ ActiveAdmin.register AdminUser do
 
   controller do
     def update
-      #byebug
+      # byebug
       resource.first_name = params[:admin_user][:first_name] unless params[:admin_user][:first_name].blank?
       resource.last_name = params[:admin_user][:last_name] unless params[:admin_user][:last_name].blank?
       resource.email = params[:admin_user][:email] unless params[:admin_user][:email].blank?

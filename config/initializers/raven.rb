@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 if ENV['SENTRY']
   Raven.configure do |config|
     if Rails.env.production?

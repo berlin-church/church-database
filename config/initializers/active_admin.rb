@@ -34,7 +34,6 @@ ActiveAdmin.setup do |config|
     admin.download_links = [:csv, :xml, :json, :csv_email]
   end
 
-
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #

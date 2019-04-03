@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 ActiveAdmin.register EventInstance do
   menu parent: 'Events'
 
@@ -26,7 +27,7 @@ ActiveAdmin.register EventInstance do
         image_tag instance.image_url if instance.image_url
       end
       row :leaders do |instance|
-        p instance.leaders&.map{|leader| "#{leader.member&.first_name} #{leader.member&.last_name}"}.join(", ")
+        p instance.leaders&.map { |leader| "#{leader.member&.first_name} #{leader.member&.last_name}" }.join(", ")
       end
     end
 
@@ -53,8 +54,8 @@ ActiveAdmin.register EventInstance do
             end
             tab :answers do
               panel "" do
-                answers = attendee.option_answers.map{|answer| [answer.question_option.question.title, answer.question_option.title]}
-                attendee.question_answers.each{|answer| answers << [answer.question.title, answer.answer]}
+                answers = attendee.option_answers.map { |answer| [answer.question_option.question.title, answer.question_option.title] }
+                attendee.question_answers.each { |answer| answers << [answer.question.title, answer.answer] }
 
                 table_for answers do
                   column :question do |answer|

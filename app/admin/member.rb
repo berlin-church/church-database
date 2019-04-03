@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-ActiveAdmin.register Member do
 
+ActiveAdmin.register Member do
   scope :with_discarded
 
   member_action :archive, method: :get do
@@ -182,8 +182,8 @@ ActiveAdmin.register Member do
               end
               tab "Form Answers" do
                 panel "" do
-                  answers = attendee.option_answers.map{|answer| [answer.question_option.question.title, answer.question_option.title]}
-                  attendee.question_answers.each{|answer| answers << [answer.question.title, answer.answer]}
+                  answers = attendee.option_answers.map { |answer| [answer.question_option.question.title, answer.question_option.title] }
+                  attendee.question_answers.each { |answer| answers << [answer.question.title, answer.answer] }
 
                   table_for answers do
                     column :question do |answer|
@@ -199,7 +199,6 @@ ActiveAdmin.register Member do
           end
         end
       end
-
     end
 
     active_admin_comments

@@ -29,7 +29,7 @@ class AdminUser < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable,
          :trackable, :validatable
-         # :lockable, :timeoutable
+  # :lockable, :timeoutable
 
   has_many :members, foreign_key: :created_by
 

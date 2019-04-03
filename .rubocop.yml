@@ -1,7 +1,7 @@
 # This is the configuration used to check the rubocop source code.
 
 #inherit_from: .rubocop_todo.yml
-require: rubocop-rspec
+# require: rubocop-rspec
 
 AllCops:
   Exclude:
@@ -19,16 +19,6 @@ AllCops:
 
 Documentation:
   Enabled: false
-
-Style/Encoding:
-  EnforcedStyle: when_needed
-  Enabled: true
-
-Style/FrozenStringLiteralComment:
-  EnforcedStyle: always
-
-#Style/IndentHeredoc:
-#  EnforcedStyle: powerpack
 
 Metrics/BlockLength:
   Exclude:
