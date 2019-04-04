@@ -10,7 +10,10 @@ module Types
 
     field :event, Types::EventType, null: true do
       description 'A event!'
-      argument :name, String, required: false
+      argument :id,         ID,      required: false
+      argument :name,       String,  required: false
+      argument :image_url,  String,  required: false
+      argument :is_visible, Boolean, required: false
     end
 
     def event(id:)
