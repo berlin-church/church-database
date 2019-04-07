@@ -20,21 +20,21 @@
 
                       </div>
                         <div class="input-field col s5">
-                            <%= f.text_field :first_name, className: "validate" %>
+                            <%= f.text_field :first_name, className: "validate", autocomplete: 'off', autocorrect: 'off', autocapitalize: 'none', spellcheck: 'false' %>
                             <%= f.label 'First Name *' %>
                         </div>
                         <div class="input-field col s5">
-                            <%= f.text_field :last_name, className: "validate" %>
+                            <%= f.text_field :last_name, className: "validate", autocomplete: 'off', autocorrect: 'off', autocapitalize: 'none', spellcheck: 'false' %>
                             <%= f.label 'Last Name *' %>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <%= f.email_field :email, className: "validate" %>
+                            <%= f.email_field :email, className: "validate", autocomplete: 'off', autocorrect: 'off', autocapitalize: 'none', spellcheck: 'false' %>
                             <%= f.label 'Email Address *' %>
                         </div>
                         <div class="input-field col s6">
-                            <%= f.phone_field :phone1, className: "" %>
+                            <%= f.phone_field :phone1, className: "", autocomplete: 'off', autocorrect: 'off', autocapitalize: 'none', spellcheck: 'false' %>
                             <%= f.label 'Phone' %>
                             <span class="helper-text">Handy or WhatsApp</span>
                         </div>
