@@ -24,6 +24,33 @@ member_luigi = Member.create!(
   phone1: "4911111112",
 )
 
+member_yoshi = Member.create!(
+  first_name: 'Yoshi',
+  last_name: 'Yoshi',
+  gender: 'male',
+  birthday: 20.years.ago,
+  email: "yoshi@bros.com",
+  phone1: "4911111113",
+)
+
+member_peach = Member.create!(
+  first_name: 'Peach',
+  last_name: 'Peach',
+  gender: 'female',
+  birthday: 20.years.ago,
+  email: "peach@peach.com",
+  phone1: "4911111114",
+)
+
+member_toad = Member.create!(
+  first_name: 'Toad',
+  last_name: 'Peach',
+  gender: 'male',
+  birthday: 20.years.ago,
+  email: "toad@peach.com",
+  phone1: "4911111114",
+)
+
 address_mario = Address.create!(
   street: "Schutz",
   street_number: "53",
@@ -35,20 +62,52 @@ address_mario = Address.create!(
 
 address_luigi = Address.create!(
   street: "Schutz",
-  street_number: "53",
+  street_number: "54",
   zip_code: "11557",
   city: "berlin",
   country: "germany",
   member_id: member_luigi.id
 )
 
-event = Event.create!(
-  name: "Group",
-  description: "Awesome group"
+address_yoshi = Address.create!(
+  street: "Schutz",
+  street_number: "55",
+  zip_code: "11557",
+  city: "berlin",
+  country: "germany",
+  member_id: member_yoshi.id
 )
 
-event_instance = EventInstance.create!(
-  event_id: event.id,
+address_peach = Address.create!(
+  street: "Schutz",
+  street_number: "56",
+  zip_code: "11557",
+  city: "berlin",
+  country: "germany",
+  member_id: member_peach.id
+)
+
+address_toad = Address.create!(
+  street: "Schutz",
+  street_number: "57",
+  zip_code: "11557",
+  city: "berlin",
+  country: "germany",
+  member_id: member_toad.id
+)
+
+event_mario = Event.create!(
+  name: "Mario's Group",
+  description: "Mario's awesome group"
+)
+
+event_yoshi = Event.create!(
+  name: "Yoshi's Group",
+  description: "Yoshi's awesome group"
+)
+
+event_mario_instance = EventInstance.create!(
+  event_id: event_mario.id,
   start_time: DateTime.now + 1.month,
   end_time: DateTime.now + 2.months,
   address_id: address_mario.id,
@@ -56,14 +115,38 @@ event_instance = EventInstance.create!(
   cost: 5,
 )
 
-leader = Leader.create!(
-  member_id: member_mario.id,
-  event_instance_id: event_instance.id,
+event_yoshi_instance = EventInstance.create!(
+  event_id: event_yoshi.id,
+  start_time: DateTime.now + 1.month,
+  end_time: DateTime.now + 2.months,
+  address_id: address_yoshi.id,
+  details: "Right there after left and right",
+  cost: 5,
 )
 
-attendee = Attendee.create!(
+leader_mario = Leader.create!(
+  member_id: member_mario.id,
+  event_instance_id: event_mario_instance.id,
+)
+
+leader_yoshi = Leader.create!(
+  member_id: member_yoshi.id,
+  event_instance_id: event_yoshi_instance.id,
+)
+
+attendee_luigi = Attendee.create!(
   member_id: member_luigi.id,
-  event_instance_id: event_instance.id,
+  event_instance_id: event_mario_instance.id,
+)
+
+attendee_peach = Attendee.create!(
+  member_id: member_peach.id,
+  event_instance_id: event_peach_instance.id,
+)
+
+attendee_toad = Attendee.create!(
+  member_id: member_toad.id,
+  event_instance_id: event_toad_instance.id,
 )
 
 questionnaire = Questionnaire.create!(
