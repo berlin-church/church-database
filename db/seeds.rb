@@ -12,7 +12,7 @@ member_mario = Member.create!(
   birthday: 35.years.ago,
   email: "mario@bros.com",
   phone1: "4911111111",
-  admin_user_id: mario_admin.id,
+  admin_user: mario_admin,
 )
 
 member_luigi = Member.create!(
