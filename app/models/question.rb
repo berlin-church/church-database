@@ -17,4 +17,16 @@ class Question < ApplicationRecord
   has_many :question_answers
 
   enum answer_type: [:open, :single, :multiple]
+
+  def is_open?
+  	answer_type == :open.to_s
+  end
+
+  def is_single?
+  	answer_type == :single.to_s
+  end
+
+  def is_multiple?
+  	answer_type == :multiple.to_s
+  end
 end
