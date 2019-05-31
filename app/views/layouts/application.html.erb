@@ -16,18 +16,15 @@
   <body>
     <%= yield %>
 
-    <% if flash.any? -%>
-      <script type="text/javascript">
-        M.AutoInit();
-        <% flash.each do |name, msg| -%>
-          M.toast({ html: '<%= msg %>' });
-        <% end -%>
-      </script>
-    <% end -%>
-
     <script type="text/javascript">
       $(document).ready(function() {
-        $('select').material_select();
+        <% if flash.any? -%>
+          M.AutoInit();
+          <% flash.each do |name, msg| -%>
+            M.toast({ html: '<%= msg %>' });
+          <% end -%>
+        <% end -%>
+        $('select').formSelect();
       });
     </script>
   </body>
