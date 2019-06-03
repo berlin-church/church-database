@@ -44,7 +44,7 @@
                         <div class="row">
                           <% questions&.each do |question| %>
                             <div class="input-field col s6">
-                              <% if question.is_open? %>
+                              <% if question.open? %>
                                 <%= text_field_tag "questions[#{question.id}]" %>
                                 <label for=<%= "questions[#{question.id}]" %>>
                                   <%= question.title %>
@@ -59,10 +59,10 @@
                                 <% question.question_options.each do |option| %>
                                     <p>
                                     <label>
-                                        <% if question.is_single? %>
+                                        <% if question.single? %>
                                             <%= radio_button_tag "questions[#{question.id}]", option.id %>
                                         <% end %>
-                                        <% if question.is_multiple? %>
+                                        <% if question.multiple? %>
                                           <%= check_box_tag "questions[#{question.id}][]", option.id %>
                                         <% end %>
                                         <span><%= option.title %></span>

@@ -24,9 +24,9 @@ class Attendee < ApplicationRecord
 
   def answer_question(question_id, answer)
     question = Question.find_by(id: question_id.to_i)
-    if question.is_open?
+    if question.open?
       question_answers << QuestionAnswer.new(question: question, attendee: self, answer: answer)
-    elsif question.is_multiple?
+    elsif question.multiple?
       answer.each do |a|
         option_answers << OptionAnswer.new(question_option_id: a)
       end
