@@ -18,15 +18,15 @@ class Question < ApplicationRecord
 
   enum answer_type: [:open, :single, :multiple]
 
-  def is_open?
+  def open?
   	answer_type == :open.to_s
   end
 
-  def is_single?
+  def single?
   	answer_type == :single.to_s
   end
 
-  def is_multiple?
+  def multiple?
   	answer_type == :multiple.to_s
   end
 end
