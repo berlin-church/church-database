@@ -22,6 +22,10 @@ class Attendee < ApplicationRecord
   has_many :question_answers, dependent: :destroy
   has_many :option_answers, dependent: :destroy
 
+  def name
+    "#{member.name} "
+  end
+
   def answer_question(question_id, answer)
     question = Question.find_by(id: question_id.to_i)
     if question.open?
