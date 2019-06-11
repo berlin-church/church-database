@@ -75,18 +75,18 @@ ActiveAdmin.register EventInstance do
   form title: 'Creating / Updating' do |f|
     inputs 'Details' do
       input :name
-      input :event
-      input :address
+      input :event, :collection => Event.order(:name)
+      input :address, :collection => Address.order(:street)
       input :start_time
       input :end_time
       input :details
       input :cost
       input :image_url
       input :description
-      input :questionnaire
+      input :questionnaire, :collection => Questionnaire.order(:name)
       inputs do
         has_many :leaders, allow_destroy: true do |a|
-          a.input :member
+          a.input :member, :collection => Member.order(:first_name)
         end
       end
     end

@@ -2,7 +2,6 @@
 ActiveAdmin.register Attendee do
   menu parent: 'Events'
 
-
   show do
     attributes_table do
       row :member
@@ -34,6 +33,19 @@ ActiveAdmin.register Attendee do
         end
       end
     end
+  end
+
+  form do |f| 
+    inputs '' do
+      input :member, :collection => Member.order(:first_name)
+      input :event_instance, :collection => EventInstance.order(:name)
+      input :form_reply
+      input :comment
+      input :paid
+      input :canceled
+      input :terms_accepted
+    end
+    actions
   end
 
   permit_params :member_id,

@@ -13,4 +13,18 @@ ActiveAdmin.register Address do
       row :member
     end
   end
+
+  form do |f| 
+    inputs '' do
+      input :member, :collection => Member.order(:first_name)
+      input :street
+      input :street_number
+      input :zip_code
+      input :city
+      input :country
+      input :district
+    end
+    actions
+  end
+
 end
