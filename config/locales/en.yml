@@ -8,6 +8,9 @@ en:
     successfully_registred: 'Registration successful'
   users: 'Users'
   activerecord:
+    attributes:
+      member:
+        gender: 'Title'
     errors:
       messages:
         record_invalid: "Validation failed: %{errors}"

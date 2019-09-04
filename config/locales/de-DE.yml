@@ -1,7 +1,16 @@
 ---
 de-DE:
+  events:
+    not_found: 'Ereignis nicht gefunden'
+  members:
+    created: 'Registrierung erfolgreich'
+    invalid: 'Ungültige Daten'
+    successfully_registred: 'Registrierung erfolgreich'
   users: 'Benutzer'
   activerecord:
+    attributes:
+      member:
+        gender: 'Titel'
     errors:
       messages:
         record_invalid: 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'
