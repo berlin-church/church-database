@@ -33,7 +33,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem "active_material", github: "vigetlabs/active_material"
 
-gem 'devise', '~> 4.6.2'
+gem 'devise', '~> 4.7.1'
 
 # Sentry
 gem "sentry-raven", '~> 2.7.4'
