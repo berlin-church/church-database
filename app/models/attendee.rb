@@ -32,10 +32,10 @@ class Attendee < ApplicationRecord
       question_answers << QuestionAnswer.new(question: question, attendee: self, answer: answer)
     elsif question.multiple?
       answer.each do |a|
-        option_answers << OptionAnswer.new(question_option_id: a)
+        option_answers << OptionAnswer.new(question_option_id: a.to_i, attendee: self)
       end
     else
-      option_answers << OptionAnswer.new(question_option_id: answer)
+      option_answers << OptionAnswer.new(question_option_id: answer.first, attendee: self)
     end
   end
 end

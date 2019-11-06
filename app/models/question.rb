@@ -16,7 +16,8 @@ class Question < ApplicationRecord
   has_many :question_options
   has_many :question_answers
 
-  enum answer_type: [:open, :single, :multiple]
+  enum answer_type: {open: 0,  single: 1,   multiple: 2}
+  enum view_mode:   {radio: 0, dropdown: 1, checkbox: 2}
 
   def open?
   	answer_type == :open.to_s

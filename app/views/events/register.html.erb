@@ -58,18 +58,30 @@
                                   </label>
                                   <span class="helper-text" data-error="wrong" data-success="right"><%= question.sub_title %></span>
                                 </p>
-                                <% question.question_options.each do |option| %>
-                                    <p>
-                                    <label>
-                                        <% if question.single? %>
-                                            <%= radio_button_tag "questions[#{question.id}]", option.id %>
-                                        <% end %>
-                                        <% if question.multiple? %>
-                                          <%= check_box_tag "questions[#{question.id}][]", option.id %>
-                                        <% end %>
+                                <% if question.single? %>
+                                  <% if question.view_mode == 'dropdown' %>
+                                    <select name="<%= "questions[#{question.id}][]"%>">
+                                      <%= options_for_select(question.question_options.map{|opt| [opt.title, opt.id]}) %>
+                                    </select>
+                                  <% else %>
+                                    <% question.question_options.each do |option| %>
+                                        <p>
+                                        <label>
+                                          <%= radio_button_tag "questions[#{question.id}]", option.id %>
+                                          <span><%= option.title %></span>
+                                        </label>
+                                        </p>
+                                    <% end %>
+                                  <% end %>
+                                <% else %>
+                                  <% question.question_options.each do |option| %>
+                                      <p>
+                                      <label>
+                                        <%= check_box_tag "questions[#{question.id}][]", option.id %>
                                         <span><%= option.title %></span>
-                                    </label>
-                                    </p>
+                                      </label>
+                                      </p>
+                                  <% end %>
                                 <% end %>
                               <% end %>
                             </div>
