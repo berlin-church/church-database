@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Church</title>
+    <title><%= @event_instance.present? ? @event_instance.name : "Church"%></title>
     <%= csrf_meta_tags %>
 
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
