@@ -16,11 +16,11 @@ module Church
 
     config.time_zone = ENV['TIME_ZONE'] || 'Berlin'
 
-    # config.middleware.insert_before 0, "Rack::Cors" do
-    #   allow do
-    #     origins 'members-local.berlin.church', 'members.berlin.church'
-    #     resource '*', :headers => :any, :methods => [:get, :post, :delete, :put, :patch, :options, :head]
-    #   end
-    # end
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+         origins '*'
+         resource '*', :headers => :any, :methods => [:get, :post, :options]
+       end
+    end
   end
 end

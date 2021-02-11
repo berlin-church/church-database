@@ -2,6 +2,11 @@
 Rails.application.routes.draw do
   use_doorkeeper
 
+  # if Rails.env.development?
+  #   mount GraphQL::Rails::Engine, at: "/graphql", graphql_path: "/graphql"
+  # end
+
+  post "/graphql", to: "graphql#execute"
   resources :members
 
   get 'events/index'
